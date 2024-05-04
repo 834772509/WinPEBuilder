@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>WinXShell 文档</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_custom.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>WinXShell</h1>
+
+<ul>
+  <li><a href="#">Project</a></li>
+  <li><a href="../index.html">Documentation</a></li>
+</ul>
+
+
+
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><strong>CSIDL</strong></li>
+  <li><a href="../manual/history.md.html">更新历史记录</a></li>
+</ul>
+<h2>Libraries</h2>
+<ul class="nowrap">
+  <li><a href="../libraries/Lua-Engine.html">Lua-Engine</a></li>
+  <li><a href="../libraries/UI-Engine.html">UI-Engine</a></li>
+  <li><a href="../libraries/Windows-Shell.html">Windows-Shell</a></li>
+</ul>
+<h2>Program</h2>
+<ul class="nowrap">
+  <li><a href="../program/WinXShell.html">WinXShell</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/App.html">App</a></li>
+  <li><a href="../classes/Shell.html">Shell</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>CSIDL</h1>
+
+<p><font size=3>
+<a href="https://docs.microsoft.com/zh-cn/windows/win32/shell/csidl">CSIDL (Shlobj.h) 常量特殊项 ID 列表 - Win32 apps | Microsoft Docs</a>
+</font></p>
+
+
+
+<pre>
+<span class="comment">-- CSIDL (Shlobj.h) 常量特殊项 ID 列表
+</span>#define CSIDL_DESKTOP                   <span class="number">0x0000</span>        // &lt;desktop&gt;
+#define CSIDL_INTERNET                  <span class="number">0x0001</span>        // Internet Explorer (icon on desktop)
+#define CSIDL_PROGRAMS                  <span class="number">0x0002</span>        // Start Menu\Programs
+#define CSIDL_CONTROLS                  <span class="number">0x0003</span>        // My Computer\Control Panel
+#define CSIDL_PRINTERS                  <span class="number">0x0004</span>        // My Computer\Printers
+#define CSIDL_PERSONAL                  <span class="number">0x0005</span>        // My Documents
+#define CSIDL_FAVORITES                 <span class="number">0x0006</span>        // &lt;user name&gt;\Favorites
+#define CSIDL_STARTUP                   <span class="number">0x0007</span>        // Start Menu\Programs\Startup
+#define CSIDL_RECENT                    <span class="number">0x0008</span>        // &lt;user name&gt;\Recent
+#define CSIDL_SENDTO                    <span class="number">0x0009</span>        // &lt;user name&gt;\SendTo
+#define CSIDL_BITBUCKET                 <span class="number">0x000a</span>        // &lt;desktop&gt;\Recycle Bin
+#define CSIDL_STARTMENU                 <span class="number">0x000b</span>        // &lt;user name&gt;\Start Menu
+#define CSIDL_MYDOCUMENTS               CSIDL_PERSONAL //  Personal was just a silly name <span class="keyword">for</span> My Documents
+#define CSIDL_MYMUSIC                   <span class="number">0x000d</span>        // <span class="string">"My Music"</span> folder
+#define CSIDL_MYVIDEO                   <span class="number">0x000e</span>        // <span class="string">"My Videos"</span> folder
+#define CSIDL_DESKTOPDIRECTORY          <span class="number">0x0010</span>        // &lt;user name&gt;\Desktop
+#define CSIDL_DRIVES                    <span class="number">0x0011</span>        // My Computer
+#define CSIDL_NETWORK                   <span class="number">0x0012</span>        // Network Neighborhood (My Network Places)
+#define CSIDL_NETHOOD                   <span class="number">0x0013</span>        // &lt;user name&gt;\nethood
+#define CSIDL_FONTS                     <span class="number">0x0014</span>        // windows\fonts
+#define CSIDL_TEMPLATES                 <span class="number">0x0015</span>
+#define CSIDL_COMMON_STARTMENU          <span class="number">0x0016</span>        // All Users\Start Menu
+#define CSIDL_COMMON_PROGRAMS           <span class="number">0x0017</span>        // All Users\Start Menu\Programs
+#define CSIDL_COMMON_STARTUP            <span class="number">0x0018</span>        // All Users\Startup
+#define CSIDL_COMMON_DESKTOPDIRECTORY   <span class="number">0x0019</span>        // All Users\Desktop
+#define CSIDL_APPDATA                   <span class="number">0x001a</span>        // &lt;user name&gt;\Application Data
+#define CSIDL_PRINTHOOD                 <span class="number">0x001b</span>        // &lt;user name&gt;\PrintHood
+#define CSIDL_LOCAL_APPDATA             <span class="number">0x001c</span>        // &lt;user name&gt;\Local Settings\Applicaiton Data (non roaming)
+
+#define CSIDL_COMMON_FAVORITES          <span class="number">0x001f</span>
+
+#ifndef _SHFOLDER_H_
+#define CSIDL_INTERNET_CACHE            <span class="number">0x0020</span>
+#define CSIDL_COOKIES                   <span class="number">0x0021</span>
+#define CSIDL_HISTORY                   <span class="number">0x0022</span>
+#define CSIDL_COMMON_APPDATA            <span class="number">0x0023</span>        // All Users\Application Data
+#define CSIDL_WINDOWS                   <span class="number">0x0024</span>        // GetWindowsDirectory()
+#define CSIDL_SYSTEM                    <span class="number">0x0025</span>        // GetSystemDirectory()
+#define CSIDL_PROGRAM_FILES             <span class="number">0x0026</span>        // C:\Program Files
+#define CSIDL_MYPICTURES                <span class="number">0x0027</span>        // C:\Program Files\My Pictures
+#endif // _SHFOLDER_H_
+
+#define CSIDL_PROFILE                   <span class="number">0x0028</span>        // USERPROFILE
+#define CSIDL_SYSTEMX86                 <span class="number">0x0029</span>        // x86 system directory on RISC
+#define CSIDL_PROGRAM_FILESX86          <span class="number">0x002a</span>        // x86 C:\Program Files on RISC
+
+#ifndef _SHFOLDER_H_
+#define CSIDL_PROGRAM_FILES_COMMON      <span class="number">0x002b</span>        // C:\Program Files\Common
+#endif // _SHFOLDER_H_
+
+#define CSIDL_PROGRAM_FILES_COMMONX86   <span class="number">0x002c</span>        // x86 Program Files\Common on RISC
+#define CSIDL_COMMON_TEMPLATES          <span class="number">0x002d</span>        // All Users\Templates
+
+#ifndef _SHFOLDER_H_
+#define CSIDL_COMMON_DOCUMENTS          <span class="number">0x002e</span>        // All Users\Documents
+#define CSIDL_COMMON_ADMINTOOLS         <span class="number">0x002f</span>        // All Users\Start Menu\Programs\Administrative Tools
+#define CSIDL_ADMINTOOLS                <span class="number">0x0030</span>        // &lt;user name&gt;\Start Menu\Programs\Administrative Tools
+#endif // _SHFOLDER_H_
+
+#define CSIDL_CONNECTIONS               <span class="number">0x0031</span>        // Network <span class="keyword">and</span> Dial-up Connections
+#define CSIDL_COMMON_MUSIC              <span class="number">0x0035</span>        // All Users\My Music
+#define CSIDL_COMMON_PICTURES           <span class="number">0x0036</span>        // All Users\My Pictures
+#define CSIDL_COMMON_VIDEO              <span class="number">0x0037</span>        // All Users\My Video
+#define CSIDL_RESOURCES                 <span class="number">0x0038</span>        // Resource Direcotry
+
+#define CSIDL_CDBURN_AREA               <span class="number">0x003b</span>        // USERPROFILE\Local Settings\Application Data\Microsoft\CD Burning
+</pre>
+
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="https://github.com/lunarmodules/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

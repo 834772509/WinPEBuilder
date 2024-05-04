@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>WinXShell 文档</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_custom.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>WinXShell</h1>
+
+<ul>
+  <li><a href="#">Project</a></li>
+  <li><a href="../index.html">Documentation</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#______">中文 </a></li>
+<li><a href="#WinXShell_5_0__2022_11_11_">WinXShell 5.0 (2022.11.11) </a></li>
+<li><a href="#WinXShell_4_6__2021_11_11_">WinXShell 4.6 (2021.11.11) </a></li>
+<li><a href="#WinXShell_4_5__2021_04_04_">WinXShell 4.5 (2021.04.04) </a></li>
+<li><a href="#WinXShell_4_4__2020_10_10_">WinXShell 4.4 (2020.10.10) </a></li>
+<li><a href="#WinXShell_4_3__2020_04_04_">WinXShell 4.3 (2020.04.04) </a></li>
+<li><a href="#__________">__________ </a></li>
+<li><a href="#English">English </a></li>
+<li><a href="#WinXShell_5_0__2022_11_11__EN">WinXShell 5.0 (2022.11.11) EN </a></li>
+<li><a href="#WinXShell_4_6__2021_11_11__EN">WinXShell 4.6 (2021.11.11) EN </a></li>
+<li><a href="#WinXShell_4_5__2021_04_04__EN">WinXShell 4.5 (2021.04.04) EN </a></li>
+<li><a href="#WinXShell_4_4__2020_10_10__EN">WinXShell 4.4 (2020.10.10) EN </a></li>
+</ul>
+
+
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/csidl.md.html">CSIDL</a></li>
+  <li><strong>更新历史记录</strong></li>
+</ul>
+<h2>Libraries</h2>
+<ul class="nowrap">
+  <li><a href="../libraries/Lua-Engine.html">Lua-Engine</a></li>
+  <li><a href="../libraries/UI-Engine.html">UI-Engine</a></li>
+  <li><a href="../libraries/Windows-Shell.html">Windows-Shell</a></li>
+</ul>
+<h2>Program</h2>
+<ul class="nowrap">
+  <li><a href="../program/WinXShell.html">WinXShell</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/App.html">App</a></li>
+  <li><a href="../classes/Shell.html">Shell</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>更新历史记录</h1>
+
+<p><a href="#中文">中文</a> <a href="#English">English</a>
+<a name="______"></a></p>
+<h2>中文</h2>
+<hr/>
+
+<p><a name="WinXShell_5_0__2022_11_11_"></a></p>
+<h2>WinXShell 5.0 (2022.11.11)</h2>
+<p>这是一个主要更新。添加和改善了以下内容:</p>
+
+<ul>
+    <li><strong>新增</strong> 使用说明文档(<code>WinXShell_Docs</code>)</li>
+    <li><strong>重构</strong> Lua 代码接口， <code>WinXShell.lua</code> 事件响应函数等</li>
+    <li><strong>改进</strong> 当作为外壳(Shell)时，以下操作可分别定义打开不同的文件资源管理器。</li>
+    <li>桌面双击打开文件夹</li>
+    <li>Windows + E 组合键</li>
+    <li>任务栏快速启动栏中点击文件资源管理器图标</li>
+    <li><strong>改进</strong> UI组件</li>
+    <li><code>UI_WIFI</code> 支持连接 WPA2/WPA3 密码类型</li>
+    <li><code>UI_WIFI</code> 添加显示密码按钮</li>
+    <li><code>UI_WIFI</code> 支持连接同名SSID</li>
+    <li><code>UI_WIFI</code> 修复不显示连接界面时，网络状态指示处理未回收内存的问题</li>
+    <li><code>UI_WIFI</code> 添加Windows 11 风格托盘图标</li>
+    <li><code>UI_WIFI</code> 支持自定义托盘图标</li>
+    <li><code>UI_WIFI</code> 浅色主题文本框显示效果</li>
+    <li><code>UI_Calendar</code>, <code>UI_TrayPanel</code> 修正农历显示不正确的问题，更新农历数据(~2025 年)</li>
+    <li><strong>改进</strong> Lua 接口</li>
+    <li>新增 <code>Sui:onClick()</code> 点击事件支持文本中的URL超链接响应</li>
+    <li>新增 <code>Sui:onHover()</code> 响应鼠标悬停事件</li>
+    <li>新增 <code>Dialog:Show()</code> 弹出对话框</li>
+    <li>新增 <code>Dialog:OpenFile()</code>, <code>Dialog:SaveFile()</code> 弹出打开文件/保存文件窗口</li>
+    <li>新增 <code>Dialog:BrowseFolder()</code> 浏览文件夹窗口</li>
+    <li>新增 <code>File.GetShortPath()</code> 获取 8.3格式的短路径</li>
+    <li>新增 <code>File.GetFullPath()</code> 获取 完整路径格式</li>
+    <li><strong>新增</strong> 日志功能(<code>-log</code> 选项)</li>
+    <li><strong>改善</strong> 自动识别是否是 Windows PE 环境运行， <code>-winpe</code> 选项 已废弃</li>
+    <li><strong>修复</strong> 有时打开菜单时，导致程序无法正常工作的问题</li>
+    <li><strong>更新</strong> 适配 Windows 11 新版本系统</li>
+    <li>其他细节更新</li>
+</ul>
+
+<p><strong>本次更新功能增加不多，主要补充了说明文档，对Lua接口进行了重新设计，代码重构。</strong></p>
+
+<p><strong>如果使用中发现问题，请随时反馈，我会尽快进行修复。</strong></p>
+
+<hr/>
+
+<p><a name="WinXShell_4_6__2021_11_11_"></a></p>
+<h2>WinXShell 4.6 (2021.11.11)</h2>
+<p>这是一个主要更新。添加和改善了以下内容:</p>
+
+<ul>
+    <li>修复 亮度调节功能占用256MB内存的问题。</li>
+    <li>改进 任务栏按钮显示风格。(适配Windows主题，解决Windows 11按钮高亮显示不自然的问题)</li>
+    <li>新增 任务栏程序快速关闭按钮(可通过配置文件进行设定)。</li>
+    <li>新增 UI组件</li>
+    <li>UI_LED        屏幕提示信息(可滚动)。</li>
+    <li>UI_TrayPanel  显示系统信息，日历，调度调节控件。</li>
+    <li>改进 UI组件</li>
+    <li>当显示设置发生变化时，将调用 ondisplaychanged() 函数，可用来调整窗口位置或更新数据。</li>
+    <li>UI_Settings   DPI设置新增225%, 250%, 275%, 300%选项。</li>
+    <li>UI_SystemInfo 适配Windows 11。</li>
+    <li>UI_Calendar   改善界面，新增亮度调节控件(可通过-brightness=true|false参数控制)。</li>
+    <li>改进 lua接口</li>
+    <li>新增 app:info('FirmwareType') 方法</li>
+    <li>新增 app:info('IsUEFIMode') 方法</li>
+    <li>新增 sui:title(str) 方法</li>
+    <li>新增 sui:info('rect') 方法</li>
+    <li>新增 sui:info('wh') 方法</li>
+    <li>新增 FolderOptions:Toggle(opt) 方法</li>
+    <li>其他细节更新</li>
+</ul>
+
+<hr/>
+
+<p><a name="WinXShell_4_5__2021_04_04_"></a></p>
+<h2>WinXShell 4.5 (2021.04.04)</h2>
+<p>这是一个主要更新。添加和改善了以下内容:</p>
+
+<ul>
+    <li>新增 任务栏窗口预览功能(thumbnail)。</li>
+    <li>改进 lua接口
+
+<pre>
+可使用Desktop对象，可通过此对象更改壁纸，实时改变桌面图标大小，
+布局等表示样式，可直接刷新桌面。
+</pre>
+</li>
+    <li>改进 UI组件</li>
+    <li>UI_Settings   支持设置屏幕亮度</li>
+    <li>UI_SystemInfo 支持读取OEM信息</li>
+    <li>UI_SystemInfo 修复无法正确显示机器名的问题</li>
+    <li>UI_SystemInfo 调整界面字体，布局等细节</li>
+    <li>UI_WIFI       可直接输入回车键进行连接</li>
+    <li>UI_WIFI      【网络和Internet 设置】可打开【网络连接】页面(更改适配器选项)</li>
+    <li>UI_WIFI       修复启动窗口闪烁问题</li>
+    <li>UI_WIFI       修复在外壳启动前运行时，弹出连接窗口会覆盖任务栏的问题</li>
+</ul>
+
+<p>将支持的Lua函数和对象信息书写LUA_TEST.bat测试脚本(UTF-8编码，中文说明)。</p>
+
+<hr/>
+
+<p><a name="WinXShell_4_4__2020_10_10_"></a></p>
+<h2>WinXShell 4.4 (2020.10.10)</h2>
+<p>这是一个常规更新。添加和改善了以下内容:</p>
+
+<ul>
+    <li>改善 lua_helper扩展
+
+<pre>
+将winapi和lua扩展库编译到应用程序本身。
+减小程序体积，简化结构，仅应用程序就可支持运行lua代码。
+</pre>
+</li>
+    <li>强化 UI组件</li>
+    <li>UI_WIFI      支持连接隐藏网络</li>
+    <li>UI_WIFI      支持多无线网卡进行网络连接</li>
+    <li>UI_Calendar  支持显示农历信息</li>
+    <li>UI_Settings  支持修改显示DPI</li>
+</ul>
+
+<hr/>
+
+<p><a name="WinXShell_4_3__2020_04_04_"></a></p>
+<h2>WinXShell 4.3 (2020.04.04)</h2>
+<p>这是一个主要更新。添加和改善了以下内容:</p>
+
+<ul>
+    <li>改进 编译选项设置 “随机基址”和“数据执行保护(DEP)”。</li>
+    <li>新增 开始菜单项目，新增【网络连接】项目。</li>
+    <li>新增 UI_WIFI 新增 PPPoE拨号按钮，有拨号连接时显示。</li>
+    <li>新增 UI<em>WIFI，UI</em>Volume支持 -notrayicon 参数，不创建托盘图标。</li>
+    <li>改进 直接接管系统 声音，网络 托盘图标，点击调用 UI<em>Volume 和 UI</em>WIFI 组件。</li>
+    <li>原生状态指示图标</li>
+    <li>支持图标右键菜单</li>
+    <li>菜单支持全部语言</li>
+    <li>改善 lua_helper 函数库，WinXShell.lua 仅保留用户自定义函数和接口。</li>
+    <li>新增 wxs-ui:xxx, wxs-open:xxx 短命令协议接口。例如:
+
+<pre>
+wxs-ui:wifi, wxs-open:system, wxs-open:networkconnections,
+wxs-open:devices, wxs-open:printers
+</pre>
+</li>
+    <li>改善 控制面板中点击【连接到网络】，将打开 UI_WIFI 连接界面。</li>
+    <li>改善 ADSL拨号连接，将打开 UI_WIFI 连接界面。(正常系统下有效，PE下无效)</li>
+    <li>修复 我的电脑右键【属性】菜单没有菜单热键问题。</li>
+    <li>修复 点击控制面板无限弹出资源管理器问题。</li>
+    <li>改善 我的电脑右键【属性】默认显示系统属性界面。</li>
+    <li>新增 浅色主题支持。</li>
+    <li>任务栏           添加浅色主题</li>
+    <li>声音,WIFI,日历   添加浅色主题</li>
+    <li>改善 个性化设定界面，增加更多颜色相关设定选项。</li>
+    <li>改善 声音设定界面滑块移动流畅度提高，提示音不再阻塞。</li>
+    <li>修复 信息通知栏无法显示的问题。</li>
+</ul>
+
+
+<p><a name="__________"></a></p>
+<h2><strong><strong></strong><em></strong></em></h2>
+
+<p><a name="English"></a></p>
+<h2>English</h2>
+<hr/>
+
+<p><a name="WinXShell_5_0__2022_11_11__EN"></a></p>
+<h2>WinXShell 5.0 (2022.11.11) EN</h2>
+<p>Not translated yet.
+Please use the translation tool to view this update instructions.</p>
+
+<hr/>
+
+<p><a name="WinXShell_4_6__2021_11_11__EN"></a></p>
+<h2>WinXShell 4.6 (2021.11.11) EN</h2>
+<p>Not translated yet.
+Please use the translation tool to view this update instructions.</p>
+
+<hr/>
+
+<p><a name="WinXShell_4_5__2021_04_04__EN"></a></p>
+<h2>WinXShell 4.5 (2021.04.04) EN</h2>
+<p>This is a major update.The following was added and improved:</p>
+
+<ul>
+    <li>Added task thumbnail feature.</li>
+    <li>Improved the lua interface.
+
+<pre>
+Add the Desktop object, through which you can change the wallpaper, change the size of the desktop icons, the layout <span class="keyword">and</span> other presentation styles <span class="keyword">in</span> real time,
+<span class="keyword">and</span> refresh the desktop directly.
+</pre>
+</li>
+    <li>Improved UI components</li>
+    <li>UI_Settings    supports setting screen brightness</li>
+    <li>UI_SystemInfo  supports reading OEM information</li>
+    <li>UI_SystemInfo  fix the issue that the computer name cannot be displayed correctly</li>
+    <li>UI_SystemInfo  adjust interface font, layout and other details</li>
+    <li>UI_WIFI        add the enter key to connect</li>
+    <li>UI_WIFI        [network and Internet settings] link will open [Network connection] control panel window(change adapter options)</li>
+    <li>UI_WIFI        fix the flickering problem of the startup window</li>
+    <li>UI_WIFI        fix the problem that the connection window will cover the taskbar when the this is running before the shell starts.</li>
+</ul>
+
+<p>Write the supported Lua functions and objects into the LUA_TEST.bat test script (UTF-8 encoding, in Chinese).</p>
+
+<hr/>
+
+<p><a name="WinXShell_4_4__2020_10_10__EN"></a></p>
+<h2>WinXShell 4.4 (2020.10.10) EN</h2>
+<p>This is a regular update. The following were updated or improved:</p>
+
+<ul>
+    <li>Improved the lua_helper extension.
+
+<pre>
+Compile winapi.dll <span class="keyword">and</span> lua extension helpers into the application itself.
+Reduce the size of the program, simplify the structure, <span class="keyword">and</span> only the application program can support running Lua code.
+</pre>
+</li>
+    <li>Improved UI components.</li>
+    <li>UI_WIFI      supports connection to hidden network</li>
+    <li>UI_WIFI      supports multiple wireless network adapters for network connection</li>
+    <li>UI_Calendar  supports display of lunar calendar for Chinese OS</li>
+    <li>UI_Settings  supports modification and display of DPI</li>
+</ul>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="https://github.com/lunarmodules/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

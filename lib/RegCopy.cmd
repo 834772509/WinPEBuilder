@@ -1,0 +1,48 @@
+rem 宏: RegCopy
+rem 复制源镜像的注册表项至基础镜像 HKLM\Src_XXX => HKLM\Tmp_XXX
+
+rem 用法：
+rem   RegCopy [/-s] HKLM\System\ControlSet001\Services\NlaSvc
+rem   RegCopy [/-s] HKLM\Software\Microsoft\Windows\CurrentVersion\SideBySide\Winners *_microsoft.vc90.crt_*
+
+set _rcopt_subkey=/s
+if /i "x%~1"=="x/-s" (
+  set _rcopt_subkey=
+  shift
+)
+
+set "param_key=%~1"
+if "%param_key:~0,5%"=="HKLM\" set "param_key=%param_key:~5%"
+set "src_key=HKLM\Src_%param_key%"
+set "tmp_key=HKLM\Tmp_%param_key%"
+
+set "chk_key=%src_key:HKLM\Src_Software\=%"
+if "x%REGCOPY_SKIP_SOFTWARE%"=="x1" (
+  if not "%chk_key%"=="%src_key%" goto :EOF
+)
+
+set "chk_key=%src_key:HKLM\Src_SYSTEM\=%"
+if "x%REGCOPY_SKIP_SYSTEM%"=="x1" (
+  if not "%chk_key%"=="%src_key%" goto :EOF
+)
+
+echo [MACRO]RegCopy %*
+
+if "x%~2"=="x" goto :_SimpleCopy
+set "find_key=%~2"
+for /f "delims=" %%A IN ('Reg Query "%src_key%" /s /f "%find_key%"') Do Call :_RegCopy "%%A"
+goto :EOF
+
+:_SimpleCopy
+reg copy "%src_key%" "%tmp_key%" %_rcopt_subkey% /f
+goto :EOF
+
+:_RegCopy
+Set "found_key=%~1"
+if "%found_key:~0,23%" neq "HKEY_LOCAL_MACHINE\Src_" goto :EOF
+set "tmp_key=HKEY_LOCAL_MACHINE\Tmp_%found_key:~23%"
+rem Reg Query "%found_key%" >nul 2>nul
+::If Not ErrorLevel 1 Echo Reg Copy "%HKeyOrg%" "%HKeyNew%" /S /F
+reg copy "%found_key%" "%tmp_key%" %_rcopt_subkey% /F
+goto :EOF
+

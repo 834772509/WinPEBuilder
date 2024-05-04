@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>WinXShell 文档</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_custom.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>WinXShell</h1>
+
+<ul>
+  <li><a href="#">Project</a></li>
+  <li><a href="../index.html">Documentation</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#options_________">options [选项] </a></li>
+<li><a href="#commands_________">commands [命令] </a></li>
+<li><a href="#ms_settings">ms-settings </a></li>
+<li><a href="#wxs_open">wxs-open </a></li>
+</ul>
+
+
+<h2>Program</h2>
+<ul class="nowrap">
+  <li><strong>WinXShell</strong></li>
+</ul>
+<h2>Libraries</h2>
+<ul class="nowrap">
+  <li><a href="../libraries/Lua-Engine.html">Lua-Engine</a></li>
+  <li><a href="../libraries/UI-Engine.html">UI-Engine</a></li>
+  <li><a href="../libraries/Windows-Shell.html">Windows-Shell</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/App.html">App</a></li>
+  <li><a href="../classes/Shell.html">Shell</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/csidl.md.html">CSIDL</a></li>
+  <li><a href="../manual/history.md.html">更新历史记录</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Script <code>WinXShell</code></h1>
+<p>
+<h2>WinXShell 实用程序。</h2>
+</p>
+<p>
+<ul>
+    <li><a href="../libraries/Windows-Shell.html#">Windows-Shell</a> --- 一个轻量的 Windows 外壳程序(Windows Shell) </li>
+    <li><a href="../libraries/Lua-Engine.html#">Lua-Engine</a> --- 一个 Lua 解释程序(Lua Engine)</li>
+    <li><a href="../libraries/UI-Engine.html#">UI-Engine</a> --- 一个现代 UI 组件引擎(UI Engine)</li>
+</ul>
+
+<p> 当前版本: 5.0.0 (2022-08-08)</p>
+
+<p> 更新记录请见 <a href="../manual/history.md.html#">history.md</a></p>
+
+<p> <a href="http://bbs.wuyou.net/forum.php?mod=viewthread&amp;tid=371541">主题(无忧论坛)</a></p>
+
+<ul>
+    <li><strong>作者</strong> slore</li>
+    <li><strong>copyright</strong> 2015-2022</li>
+</ul>
+</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe [options] ...
+WinXShell.exe [commands]
+WinXShell.exe -code &lt;lua code&gt;
+WinXShell.exe -script &lt;path/to/script.lua&gt; [paramterlist]
+</pre>
+    </ul>
+
+
+<h2><a href="#options_________">options [选项] </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#-regist">-regist</a></td>
+	<td class="summary">注册WinXShell.exe程序，之后可省略路径进行调用。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-console">-console</a></td>
+	<td class="summary">显示调试窗口。可与其他选项命令一起使用。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-log">-log</a></td>
+	<td class="summary">生成日志文件，记录输出信息。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-noaction">-noaction</a></td>
+	<td class="summary">不执行任何命令退出程序。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-shell">-shell</a></td>
+	<td class="summary">启动外壳程序。如果存在外壳程序，则先关闭外壳程序后启动。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-daemon">-daemon</a></td>
+	<td class="summary">以常驻进程模式启动。负责接管系统接口，亮度调节控制等。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-jcfg">-jcfg</a></td>
+	<td class="summary">指定UI组件的启动配置。
+ 默认加载 <code>main.jcfg</code>。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-code">-code</a></td>
+	<td class="summary">执行lua代码。</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#-script">-script</a></td>
+	<td class="summary">执行lua脚本。</td>
+	</tr>
+</table>
+<h2><a href="#commands_________">commands [命令] </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings">ms-settings</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open">wxs-open</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#ms_settings">ms-settings </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:system">ms-settings:system</a></td>
+	<td class="summary">打开 我的电脑属性</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:about">ms-settings:about</a></td>
+	<td class="summary">打开 关于 界面</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:display">ms-settings:display</a></td>
+	<td class="summary">打开 显示设置 界面</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:personalization">ms-settings:personalization</a></td>
+	<td class="summary">打开 个性化 界面</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:taskbar">ms-settings:taskbar</a></td>
+	<td class="summary">打开 任务栏设置 界面</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:dateandtime">ms-settings:dateandtime</a></td>
+	<td class="summary">打开 时间和日期设置 界面</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ms-settings:network">ms-settings:network</a></td>
+	<td class="summary">打开 网络连接设置 界面(高版本Windows有效)</td>
+	</tr>
+</table>
+<h2><a href="#wxs_open">wxs-open </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open:system">wxs-open:system</a></td>
+	<td class="summary">打开 我的电脑属性</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open:printers">wxs-open:printers</a></td>
+	<td class="summary">打开 打印机设置 窗口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open:networkconnections">wxs-open:networkconnections</a></td>
+	<td class="summary">打开 网络连接设置 窗口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open:devicesandprinters">wxs-open:devicesandprinters</a></td>
+	<td class="summary">打开设备和打印机设置 窗口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open:wifi">wxs-open:wifi</a></td>
+	<td class="summary">打开 无线网络连接 界面</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxs-open:volume">wxs-open:volume</a></td>
+	<td class="summary">打开 音量控制 界面</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="options_________"></a>options [选项] </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "-regist"></a>
+    <strong>-regist</strong>
+    </dt>
+    <dd>
+    注册WinXShell.exe程序，之后可省略路径进行调用。  (写入注册表<code>App Paths</code>项目)<br>
+ 一般用于初次启动命令， 常与 <a href="../program/WinXShell.html#-noaction">-noaction</a> 或 <a href="../program/WinXShell.html#-daemon">-daemon</a> 选项一起使用。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -regist -noaction</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-console"></a>
+    <strong>-console</strong>
+    </dt>
+    <dd>
+    显示调试窗口。可与其他选项命令一起使用。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -console -code <span class="string">"winapi.show_message('title', 'message')"</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-log"></a>
+    <strong>-log</strong>
+    </dt>
+    <dd>
+    生成日志文件，记录输出信息。  在 %temp% 目录下生成， WinXShell.&lt;PID&gt;.log 日志文件。</p>
+
+<p> 有 <a href="../program/WinXShell.html#-console">-console</a> 参数时，也会生成日志文件，不需要添加此选项。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -log -code <span class="string">"winapi.show_message('title', 'message')"</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-noaction"></a>
+    <strong>-noaction</strong>
+    </dt>
+    <dd>
+    不执行任何命令退出程序。  一般用于初次启动命令， 一般在初次启动时，和 <a href="../program/WinXShell.html#-regist">-regist</a> 选项一起使用只做程序注册。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -regist -noaction</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-shell"></a>
+    <strong>-shell</strong>
+    </dt>
+    <dd>
+    启动外壳程序。如果存在外壳程序，则先关闭外壳程序后启动。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -shell</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-daemon"></a>
+    <strong>-daemon</strong>
+    </dt>
+    <dd>
+    以常驻进程模式启动。负责接管系统接口，亮度调节控制等。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -daemon</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-jcfg"></a>
+    <strong>-jcfg</strong>
+    </dt>
+    <dd>
+    指定UI组件的启动配置。
+ 默认加载 <code>main.jcfg</code>。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -jcfg wxsUI\UI_Settings.zip\keyboard.jcfg</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-code"></a>
+    <strong>-code</strong>
+    </dt>
+    <dd>
+    执行lua代码。
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#">Lua-Engine</a>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -code lua代码
+
+<span class="comment">-- 示例命令
+</span>WinXShell.exe -code Desktop:SizeIconSize(<span class="string">'M'</span>)
+WinXShell.exe -code Taskbar:Pin(<span class="string">'regedit.exe'</span>)
+WinXShell.exe -code winapi.show_message(<span class="string">'title'</span>,<span class="string">'message'</span>)
+<span class="comment">-- 代码中包含空格字符，使用双引号将代码引用
+</span>WinXShell.exe -code <span class="string">"winapi.show_message('title', 'message')"</span>
+WinXShell.exe -code <span class="string">"winapi.show_message('title', 'message-' .. '1')"</span>
+WinXShell.exe -code <span class="string">"exec('cmd.exe /k echo hello')"</span>
+WinXShell.exe -code <span class="string">"exec('/hide', 'PETools.cmd PETools.7z')"</span>
+WinXShell.exe -code <span class="string">"Taskbar:Pin([[%ProgramFile%\Everything\Everything.exe]])"</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "-script"></a>
+    <strong>-script</strong>
+    </dt>
+    <dd>
+    执行lua脚本。
+
+
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -script path\to\script.lua [参数]</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="commands_________"></a>commands [命令] </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ms-settings"></a>
+    <strong>ms-settings</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "wxs-open"></a>
+    <strong>wxs-open</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="ms_settings"></a>ms-settings </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ms-settings:system"></a>
+    <strong>ms-settings:system</strong>
+    </dt>
+    <dd>
+    打开 我的电脑属性
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ms-settings:about"></a>
+    <strong>ms-settings:about</strong>
+    </dt>
+    <dd>
+    打开 关于 界面
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ms-settings:display"></a>
+    <strong>ms-settings:display</strong>
+    </dt>
+    <dd>
+    打开 显示设置 界面
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ms-settings:personalization"></a>
+    <strong>ms-settings:personalization</strong>
+    </dt>
+    <dd>
+    打开 个性化 界面
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ms-settings:taskbar"></a>
+    <strong>ms-settings:taskbar</strong>
+    </dt>
+    <dd>
+    打开 任务栏设置 界面
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ms-settings:dateandtime"></a>
+    <strong>ms-settings:dateandtime</strong>
+    </dt>
+    <dd>
+    打开 时间和日期设置 界面
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ms-settings:network"></a>
+    <strong>ms-settings:network</strong>
+    </dt>
+    <dd>
+    打开 网络连接设置 界面(高版本Windows有效)
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="wxs_open"></a>wxs-open </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "wxs-open:system"></a>
+    <strong>wxs-open:system</strong>
+    </dt>
+    <dd>
+    打开 我的电脑属性
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "wxs-open:printers"></a>
+    <strong>wxs-open:printers</strong>
+    </dt>
+    <dd>
+    打开 打印机设置 窗口
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "wxs-open:networkconnections"></a>
+    <strong>wxs-open:networkconnections</strong>
+    </dt>
+    <dd>
+    打开 网络连接设置 窗口
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "wxs-open:devicesandprinters"></a>
+    <strong>wxs-open:devicesandprinters</strong>
+    </dt>
+    <dd>
+    打开设备和打印机设置 窗口
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "wxs-open:wifi"></a>
+    <strong>wxs-open:wifi</strong>
+    </dt>
+    <dd>
+    打开 无线网络连接 界面
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "wxs-open:volume"></a>
+    <strong>wxs-open:volume</strong>
+    </dt>
+    <dd>
+    打开 音量控制 界面
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="https://github.com/lunarmodules/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

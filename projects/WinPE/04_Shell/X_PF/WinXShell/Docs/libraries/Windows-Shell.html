@@ -1,0 +1,772 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>WinXShell 文档</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_custom.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>WinXShell</h1>
+
+<ul>
+  <li><a href="#">Project</a></li>
+  <li><a href="../index.html">Documentation</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#______">详细 </a></li>
+<li><a href="#WinXShell_jcfg">WinXShell.jcfg </a></li>
+<li><a href="#WinXShell_lua">WinXShell.lua </a></li>
+<li><a href="#____________________">事件函数(外壳) </a></li>
+</ul>
+
+
+<h2>Libraries</h2>
+<ul class="nowrap">
+  <li><a href="../libraries/Lua-Engine.html">Lua-Engine</a></li>
+  <li><a href="../libraries/UI-Engine.html">UI-Engine</a></li>
+  <li><strong>Windows-Shell</strong></li>
+</ul>
+<h2>Program</h2>
+<ul class="nowrap">
+  <li><a href="../program/WinXShell.html">WinXShell</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/App.html">App</a></li>
+  <li><a href="../classes/Shell.html">Shell</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/csidl.md.html">CSIDL</a></li>
+  <li><a href="../manual/history.md.html">更新历史记录</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Windows-Shell</code></h1>
+<p>
+<h2>Windows 外壳程序</h2>
+</p>
+<p> 在 Windows Desktop, Windows Server, Windows Server Core 以及 Windows PE环境下</p>
+
+<p> 运行的轻量 Windows 外壳程序(基本桌面，开始菜单，任务栏，托盘区域，时钟区域)。</p>
+
+
+<h2><a href="#______">详细 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#WinXShell.jcfg">WinXShell.jcfg</a></td>
+	<td class="summary">配置文件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#WinXShell.lua">WinXShell.lua</a></td>
+	<td class="summary">扩展脚本</td>
+	</tr>
+</table>
+<h2><a href="#WinXShell_jcfg">WinXShell.jcfg </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#JS_DESKTOP">JS_DESKTOP</a></td>
+	<td class="summary">桌面 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_THEMES">JS_THEMES</a></td>
+	<td class="summary">主题 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_TASKBAR">JS_TASKBAR</a></td>
+	<td class="summary">任务栏 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_STARTMENU">JS_STARTMENU</a></td>
+	<td class="summary">开始菜单 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_QUICKLAUNCH">JS_QUICKLAUNCH</a></td>
+	<td class="summary">快速启动栏 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_NOTIFYAREA">JS_NOTIFYAREA</a></td>
+	<td class="summary">托盘区域 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_NOTIFYCLOCK">JS_NOTIFYCLOCK</a></td>
+	<td class="summary">时钟区域 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_DAEMON">JS_DAEMON</a></td>
+	<td class="summary">Daemon模式 设置</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#JS_FILEEXPLORER">JS_FILEEXPLORER</a></td>
+	<td class="summary">文件资源管理器 设置</td>
+	</tr>
+</table>
+<h2><a href="#WinXShell_lua">WinXShell.lua </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ShellEvents">ShellEvents</a></td>
+	<td class="summary">事件函数(外壳)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CustomActions">CustomActions</a></td>
+	<td class="summary">自定义时钟信息显示格式</td>
+	</tr>
+</table>
+<h2><a href="#____________________">事件函数(外壳) </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#App:PreShell">App:PreShell ()</a></td>
+	<td class="summary">外壳启动前序事件函数</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:OnShell">App:OnShell ()</a></td>
+	<td class="summary">外壳启动事件函数</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:OnFirstShellRun">App:OnFirstShellRun ()</a></td>
+	<td class="summary">系统启动后，第一次外壳启动事件函数</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="______"></a>详细 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "WinXShell.jcfg"></a>
+    <strong>WinXShell.jcfg</strong>
+    </dt>
+    <dd>
+    配置文件
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "WinXShell.lua"></a>
+    <strong>WinXShell.lua</strong>
+    </dt>
+    <dd>
+    扩展脚本
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="WinXShell_jcfg"></a>WinXShell.jcfg </h2>
+
+          <div class="section-description">
+           json 格式的配置文件，可配置外壳程序的各部分功能的显示效果。
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "JS_DESKTOP"></a>
+    <strong>JS_DESKTOP</strong>
+    </dt>
+    <dd>
+    桌面 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">3rd_open_arguments</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         双击桌面图标时，调用 第三方文件资源管理器 的参数格式
+        </li>
+        <li><span class="parameter">cascademenu{'WinXNew'}</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         桌面新建二级菜单
+        </li>
+        <li><span class="parameter">iconsize</span>
+            <span class="types"><span class="type">int</span></span>
+         桌面图标大小
+        </li>
+        <li><span class="parameter">bkcolor</span>
+            <span class="types"><span class="type">color</span></span>
+         桌面的背景色
+        </li>
+        <li><span class="parameter">wallpaper_mode</span>
+            <span class="types"><span class="type">int </span></span>
+         <l>壁纸显示模式</l> <ul> <li> <code>0</code> - strech 拉伸 (默认)</li> <li> <code>1</code> - tile 平铺</li> <li> <code>2</code> - center 居中</ul>
+        </li>
+        <li><span class="parameter">wallpaper</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         壁纸图片路径，不指定时使用系统壁纸
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="string">"JS_DESKTOP"</span>: {
+    <span class="string">"3rd_open_arguments"</span>: <span class="string">"\"%s\""</span>,
+    <span class="string">"cascademenu"</span>: {
+      <span class="string">"WinXNew"</span>: <span class="string">"Directory\\Background\\shell\\WinXNew"</span>
+    },
+    <span class="string">"#iconsize"</span>: <span class="number">32</span>,
+    <span class="string">"bkcolor comment"</span>: <span class="string">"green for eyes"</span>,
+    <span class="string">"bkcolor"</span>: [<span class="number">199</span>, <span class="number">237</span>, <span class="number">204</span>],
+    <span class="string">"wallpaperstyle comment"</span>: <span class="string">"value:0-strech(default);1-tile;2-center"</span>,
+    <span class="string">"::WP_MODE"</span>: <span class="number">0</span>,
+    <span class="string">"wallpaper comment"</span>: <span class="string">"if it is not set or be empty, will use system's wallpaper image file"</span>,
+    <span class="string">"::WP"</span>: <span class="string">""</span>
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_THEMES"></a>
+    <strong>JS_THEMES</strong>
+    </dt>
+    <dd>
+    主题 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">taskbar{'bkcolor'}</span>
+            <span class="types"><span class="type">color</span></span>
+         任务栏背景色
+        </li>
+        <li><span class="parameter">taskbar{'task_line_color'}</span>
+            <span class="types"><span class="type">color</span></span>
+         任务图标海缆线颜色
+        </li>
+        <li><span class="parameter">taskbar{'textcolor'}</span>
+            <span class="types"><span class="type">color</span></span>
+         任务标题颜色
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">JS_THEMES = {
+  <span class="string">"blue"</span>: {
+    <span class="string">"taskbar"</span>: {
+      <span class="string">"bkcolor"</span>: [<span class="number">0</span>, <span class="number">120</span>, <span class="number">215</span>],
+      <span class="string">"task_line_color"</span>: [<span class="number">238</span>, <span class="number">238</span>, <span class="number">238</span>],
+      <span class="string">"textcolor"</span>: <span class="string">"0xffffff"</span>
+    }
+  },
+  <span class="string">"dark"</span>: {
+    <span class="string">"taskbar"</span>: {
+      <span class="string">"bkcolor"</span>: [<span class="number">38</span>, <span class="number">38</span>, <span class="number">38</span>],
+      <span class="string">"task_line_color"</span>: [<span class="number">238</span>, <span class="number">238</span>, <span class="number">238</span>],
+      <span class="string">"textcolor"</span>: <span class="string">"0xffffff"</span>
+    }
+  },
+  <span class="string">"light"</span>: {
+    <span class="string">"taskbar"</span>: {
+      <span class="string">"style"</span>: <span class="string">"light"</span>,
+      <span class="string">"bkcolor"</span>: [<span class="number">238</span>, <span class="number">238</span>, <span class="number">238</span>],
+      <span class="string">"task_line_color"</span>: [<span class="number">0</span>, <span class="number">120</span>, <span class="number">215</span>],
+      <span class="string">"textcolor"</span>: <span class="string">"0x000000"</span>
+    }
+  }
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_TASKBAR"></a>
+    <strong>JS_TASKBAR</strong>
+    </dt>
+    <dd>
+    任务栏 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">visible</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否显示任务栏
+        </li>
+        <li><span class="parameter">smallicon</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否使用小图标显示
+        </li>
+        <li><span class="parameter">thumbnail</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否显示任务缩略图
+        </li>
+        <li><span class="parameter">task_close_button</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否显示任务快捷关闭按钮
+        </li>
+        <li><span class="parameter">no_task_title</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否隐藏任务标题
+        </li>
+        <li><span class="parameter">userebar</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否使用rebar(快速启动栏)
+        </li>
+        <li><span class="parameter">theme</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         主题名
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">int</span></span>
+         任务栏高度
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="string">"JS_TASKBAR"</span>: {
+  <span class="string">"visible"</span>： <span class="keyword">true</span>,
+  <span class="string">"smallicon"</span>: <span class="keyword">false</span>,
+  <span class="string">"thumbnail"</span>: <span class="keyword">true</span>,
+  <span class="string">"task_close_button"</span>: <span class="keyword">true</span>,
+  <span class="string">"no_task_title"</span>: <span class="keyword">false</span>,
+  <span class="string">"userebar"</span>: <span class="keyword">false</span>,
+  <span class="string">"theme"</span>: <span class="string">"dark"</span>,
+  <span class="string">"height"</span>: <span class="number">40</span>
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_STARTMENU"></a>
+    <strong>JS_STARTMENU</strong>
+    </dt>
+    <dd>
+    开始菜单 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">enabled</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否响应开始菜单
+        </li>
+        <li><span class="parameter">start_pushed_bkcolor</span>
+            <span class="types"><span class="type">color</span></span>
+         开始菜单按下状态的背景颜色
+        </li>
+        <li><span class="parameter">start_icon</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         <l>开始菜单图标</l> <ul> <li> <code>theme</code>  - 主题资源图标(exe文件的 ICO 资源)</li> <li> <code>empty</code>  - 空白图标</li> <li> <code>custom</code> - 自定义图标(exe文件的 ICO 资源)</li> </ul>
+        </li>
+        <li><span class="parameter">notopitems</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏开始菜单顶部快捷方式图标
+        </li>
+        <li><span class="parameter">noprograms</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 程序 组
+        </li>
+        <li><span class="parameter">nosettings</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 设定
+        </li>
+        <li><span class="parameter">nobrowse</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 浏览
+        </li>
+        <li><span class="parameter">noconnections</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 网络连接
+        </li>
+        <li><span class="parameter">nofind</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 查找
+        </li>
+        <li><span class="parameter">norun</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 运行
+        </li>
+        <li><span class="parameter">nologoff</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 注销
+        </li>
+        <li><span class="parameter">norestart</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 重启
+        </li>
+        <li><span class="parameter">noshutdown</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 关机
+        </li>
+        <li><span class="parameter">noterm</span>
+            <span class="types"><span class="type">bool</span></span>
+         隐藏 退出
+        </li>
+        <li><span class="parameter">commands{'reboot'}</span>
+            <span class="types"><span class="type">json</span></span>
+         自定义重启命令
+        </li>
+        <li><span class="parameter">commands{'shutdown'}</span>
+            <span class="types"><span class="type">json</span></span>
+         自定义关机命令
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="string">"JS_STARTMENU"</span>: {
+    <span class="string">"enabled"</span>： <span class="keyword">true</span>,
+    <span class="string">"start_pushed_bkcolor"</span>: [<span class="number">0</span>, <span class="number">100</span>, <span class="number">180</span>],
+    <span class="string">"start_icon_comment"</span>: <span class="string">"theme;empty;custom"</span>,
+    <span class="string">"start_icon"</span>: <span class="string">"theme"</span>,
+    <span class="string">"notopitems"</span>: <span class="keyword">false</span>,
+    <span class="string">"noprograms"</span>: <span class="keyword">false</span>,
+    <span class="string">"nosettings"</span>: <span class="keyword">true</span>,
+    <span class="string">"nobrowse"</span>: <span class="keyword">false</span>,
+    <span class="string">"noconnections"</span>: <span class="keyword">false</span>,
+    <span class="string">"nofind"</span>: <span class="keyword">true</span>,
+    <span class="string">"norun"</span>: <span class="keyword">false</span>,
+    <span class="string">"nologoff"</span>: <span class="keyword">true</span>,
+    <span class="string">"norestart"</span>: <span class="keyword">false</span>,
+    <span class="string">"noshutdown"</span>: <span class="keyword">false</span>,
+    <span class="string">"noterm"</span>: <span class="keyword">true</span>,
+    <span class="string">"commands"</span>: {
+      <span class="string">"reboot"</span>: {
+        <span class="string">"command"</span>: <span class="string">"Wpeutil.exe"</span>,
+        <span class="string">"parameters"</span>: <span class="string">"Reboot"</span>
+      },
+      <span class="string">"shutdown"</span>: {
+        <span class="string">"command"</span>: <span class="string">"Wpeutil.exe"</span>,
+        <span class="string">"parameters"</span>: <span class="string">"Shutdown"</span>
+      }
+    }
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_QUICKLAUNCH"></a>
+    <strong>JS_QUICKLAUNCH</strong>
+    </dt>
+    <dd>
+    快速启动栏 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">maxiconsinrow</span>
+            <span class="types"><span class="type">bool</span></span>
+         快速启动栏最大单行图标个数
+        </li>
+        <li><span class="parameter">3rd_startup_arguments</span>
+            <span class="types"><span class="type">bool</span></span>
+         第三方文件资源管理器打开默认参数
+        </li>
+        <li><span class="parameter">hide_showdesktop</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否显示显示桌面图标
+        </li>
+        <li><span class="parameter">hide_fileexplorer</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否显示文件资源管理器图标
+        </li>
+        <li><span class="parameter">hide_fixedsep</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否隐藏系统与用户图标分割线
+        </li>
+        <li><span class="parameter">hide_usericons</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否隐藏用户图标
+        </li>
+        <li><span class="parameter">folder</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         用户图标所在路径
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="string">"JS_QUICKLAUNCH"</span>: {
+    <span class="string">"maxiconsinrow"</span>: <span class="number">20</span>,
+    <span class="string">"3rd_startup_arguments"</span>: <span class="string">""</span>,
+    <span class="string">"hide_showdesktop"</span>: <span class="keyword">false</span>,
+    <span class="string">"hide_fileexplorer"</span>: <span class="keyword">false</span>,
+    <span class="string">"hide_fixedsep"</span>: <span class="keyword">false</span>,
+    <span class="string">"hide_usericons"</span>: <span class="keyword">false</span>,
+    <span class="string">"folder"</span>: <span class="string">"Microsoft\\Internet Explorer\\Quick Launch\\User Pinned\\TaskBar"</span>
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_NOTIFYAREA"></a>
+    <strong>JS_NOTIFYAREA</strong>
+    </dt>
+    <dd>
+    托盘区域 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">hide_toggle_button</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否隐藏托盘图标折叠按钮
+        </li>
+        <li><span class="parameter">hide_showdesktop_button</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否隐藏显示桌面按钮
+        </li>
+        <li><span class="parameter">handle_system_network</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否接管系统原生网络图标点击事件
+        </li>
+        <li><span class="parameter">handle_system_volume</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否接管系统原生网络图标点击事件
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="string">"JS_NOTIFYAREA"</span>: {
+    <span class="string">"hide_toggle_button"</span>: <span class="keyword">false</span>,
+    <span class="string">"hide_showdesktop_button"</span>: <span class="keyword">false</span>,
+    <span class="string">"handle_system_network"</span>: <span class="keyword">true</span>,
+    <span class="string">"handle_system_volume"</span>: <span class="keyword">true</span>
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_NOTIFYCLOCK"></a>
+    <strong>JS_NOTIFYCLOCK</strong>
+    </dt>
+    <dd>
+    时钟区域 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">visible</span>
+            <span class="types"><span class="type">bool</span></span>
+         是否显示时钟区域
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">JS_NOTIFYCLOCK = {
+    <span class="string">"visible"</span>: <span class="keyword">true</span>
+}</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_DAEMON"></a>
+    <strong>JS_DAEMON</strong>
+    </dt>
+    <dd>
+    Daemon模式 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">clockarea_click</span>
+            <span class="types"><span class="type">json</span></span>
+         定义时钟区域单击时调用命令
+        </li>
+        <li><span class="parameter">clockarea_dbclick</span>
+            <span class="types"><span class="type">json</span></span>
+         定义时钟区域双击时调用命令
+        </li>
+        <li><span class="parameter">screen_brightness</span>
+            <span class="types"><span class="type">int</span></span>
+         亮度
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="string">"JS_DAEMON"</span>: {
+    <span class="string">"clockarea_click"</span>: {
+      <span class="string">"command"</span>: <span class="string">"##{JVAR_MODULEPATH}\\#{JVAR_MODULENAME}"</span>,
+      <span class="string">"parameters"</span>: <span class="string">"-code wxsUI('UI_Calendar','main.jcfg')"</span>
+    },
+    <span class="string">"clockarea_dbclick"</span>: {
+      <span class="string">"command"</span>: <span class="string">"timedate.cpl"</span>
+    },
+    <span class="string">"screen_brightness"</span>: <span class="number">100</span>
+  }</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "JS_FILEEXPLORER"></a>
+    <strong>JS_FILEEXPLORER</strong>
+    </dt>
+    <dd>
+    文件资源管理器 设置
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">3rd_filename</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         第三方文件资源管理器程序路径
+        </li>
+        <li><span class="parameter">padding-bottom</span>
+            <span class="types"><span class="type">int</span></span>
+         内置文件资源管理器(文件打开对话框)的底部高度
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">JS_FILEEXPLORER = {
+    <span class="string">"3rd_filename"</span>: <span class="string">"##{JVAR_MODULEPATH}\\explorer++.exe"</span>,
+    <span class="string">"padding-bottom"</span>: <span class="number">20</span>
+}</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="WinXShell_lua"></a>WinXShell.lua </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ShellEvents"></a>
+    <strong>ShellEvents</strong>
+    </dt>
+    <dd>
+    事件函数(外壳)
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CustomActions"></a>
+    <strong>CustomActions</strong>
+    </dt>
+    <dd>
+    自定义时钟信息显示格式
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="____________________"></a>事件函数(外壳) </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "App:PreShell"></a>
+    <strong>App:PreShell ()</strong>
+    </dt>
+    <dd>
+    外壳启动前序事件函数
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:OnShell"></a>
+    <strong>App:OnShell ()</strong>
+    </dt>
+    <dd>
+    外壳启动事件函数
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:OnFirstShellRun"></a>
+    <strong>App:OnFirstShellRun ()</strong>
+    </dt>
+    <dd>
+    系统启动后，第一次外壳启动事件函数
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="https://github.com/lunarmodules/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

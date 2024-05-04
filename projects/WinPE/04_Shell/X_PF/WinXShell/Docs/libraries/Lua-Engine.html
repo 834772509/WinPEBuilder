@@ -1,0 +1,969 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>WinXShell 文档</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_custom.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>WinXShell</h1>
+
+<ul>
+  <li><a href="#">Project</a></li>
+  <li><a href="../index.html">Documentation</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Lua_____Lua____">Lua 与 Lua 库 </a></li>
+<li><a href="#_______os____">扩展 os 库 </a></li>
+<li><a href="#_______string____">扩展 string 库 </a></li>
+<li><a href="#_______math____">扩展 math 库 </a></li>
+<li><a href="#_______lua_______">扩展 lua 函数 </a></li>
+<li><a href="#_______lua_______">扩展 lua 对象 </a></li>
+<li><a href="#Deprecated__________">Deprecated 已弃用 </a></li>
+</ul>
+
+
+<h2>Libraries</h2>
+<ul class="nowrap">
+  <li><strong>Lua-Engine</strong></li>
+  <li><a href="../libraries/UI-Engine.html">UI-Engine</a></li>
+  <li><a href="../libraries/Windows-Shell.html">Windows-Shell</a></li>
+</ul>
+<h2>Program</h2>
+<ul class="nowrap">
+  <li><a href="../program/WinXShell.html">WinXShell</a></li>
+</ul>
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><a href="../classes/App.html">App</a></li>
+  <li><a href="../classes/Shell.html">Shell</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/csidl.md.html">CSIDL</a></li>
+  <li><a href="../manual/history.md.html">更新历史记录</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>Lua-Engine</code></h1>
+<p>
+<h2>Lua 解释程序(Lua Engine)</h2>
+</p>
+<p>用于 <code>WinXShell.lua</code>, <code>-code</code>, <code>-script</code> 选项时使用的代码，函数。</p>
+
+
+<h2><a href="#Lua_____Lua____">Lua 与 Lua 库 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Overview">Overview</a></td>
+	<td class="summary"><strong>概览</strong></td>
+	</tr>
+</table>
+<h2><a href="#_______os____">扩展 os 库 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#os.putenv">os.putenv (var, value)</a></td>
+	<td class="summary">设置 环境变量</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#os.info">os.info (key)</a></td>
+	<td class="summary">获取 系统信息</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#os.exec">os.exec ([opt], cmd)</a></td>
+	<td class="summary">执行外部命令</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#os.link">os.link (lnk, target[, param[, icon[, index[, showcmd]]]])</a></td>
+	<td class="summary">创建 快捷方式</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#os.rundll">os.rundll (dllfile, funcname[, param1[, param2[, ...]]])</a></td>
+	<td class="summary">调用 dll 中的公开函数</td>
+	</tr>
+</table>
+<h2><a href="#_______string____">扩展 string 库 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#string.envstr">string.envstr (str)</a></td>
+	<td class="summary">展开 环境变量</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#string.resstr">string.resstr (str)</a></td>
+	<td class="summary">展开 字符串资源</td>
+	</tr>
+</table>
+<h2><a href="#_______math____">扩展 math 库 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#math.band">math.band (a, b)</a></td>
+	<td class="summary">进行 位与运算</td>
+	</tr>
+</table>
+<h2><a href="#_______lua_______">扩展 lua 函数 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#exec">exec ()</a></td>
+	<td class="summary">执行外部命令</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#link">link ()</a></td>
+	<td class="summary">创建 快捷方式</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#wxsUI">wxsUI (ui[, jcfg[, param]])</a></td>
+	<td class="summary">打开 指定的UI组件</td>
+	</tr>
+</table>
+<h2><a href="#_______lua_______">扩展 lua 对象 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#App">App</a></td>
+	<td class="summary"><a href="../classes/App.html#">App</a></td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shell">Shell</a></td>
+	<td class="summary"><a href="../classes/Shell.html#">Shell</a></td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#System">System</a></td>
+	<td class="summary"><a href="../classes/System.html#">System</a></td>
+	</tr>
+</table>
+<h2><a href="#Deprecated__________">Deprecated 已弃用 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#win_copyright">win_copyright ()</a></td>
+	<td class="summary">已弃用。获取 Windows 许可证说明</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cpu_info">cpu_info ()</a></td>
+	<td class="summary">已弃用。获取 CPU 信息(注册表)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#mem_info">mem_info ()</a></td>
+	<td class="summary">已弃用。获取 内存信息</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#res_str">res_str (file, id)</a></td>
+	<td class="summary">已弃用。获取 资源文件中的字符串信息</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#call_dll">call_dll ()</a></td>
+	<td class="summary">已弃用。调用 dll 中的公开函数</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CloseShellWindow">CloseShellWindow ()</a></td>
+	<td class="summary">已弃用。关闭 外壳窗口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MinimizeWindow">MinimizeWindow (class, title)</a></td>
+	<td class="summary">已弃用。最小化 指定窗口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HideWindow">HideWindow (class, title)</a></td>
+	<td class="summary">已弃用。隐藏 指定窗口</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CloseWindow">CloseWindow (class, title)</a></td>
+	<td class="summary">已弃用。关闭 指定窗口</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Lua_____Lua____"></a>Lua 与 Lua 库 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Overview"></a>
+    <strong>Overview</strong>
+    </dt>
+    <dd>
+    <strong>概览</strong> <br>
+WinXShell 将<a href="https://www.lua.org/">Lua</a>解释器嵌入程序中，支持调用Lua代码，还提供了实用的扩展Lua对象，功能函数。</p>
+
+<p>Lua语言自带的功能，模块可直接使用, 比如字符串操作，数学函数，系统功能函数等。<a href="https://www.lua.org/manual/5.4/manual.html#6">Lua标准库</a></p>
+
+<p>详细信息请访问 Lua官方网站 <a href="https://www.lua.org/">https://www.lua.org/</a> 查看。</p>
+
+<p>另外还引入了 <a href="https://stevedonovan.github.io/winapi/api.html">winapi</a> 库，可以使用很多实用的面向Windows系统的功能。</p>
+
+<p><br>
+<strong>简单使用Lua指令时，请了解以下Lua基本语法</strong>:</p>
+
+
+<ul>
+    <li>函数说明中的类型主要有 <code>int</code> 整数类型, <code>bool</code> 布尔型(true - 真, false - 假), <a href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> 字符串类型。</li>
+    <li>字符串使用一对单引号(<code>&apos;</code>)或者双引号(<code>&quot;</code>)包起来。特殊的字符需要使用转义字符代替。比如：
+    <ul>
+        <li><code>\t</code> => 制表符， <code>\\</code> => <code>\</code>, <code>\n</code> => 换行符</li>
+    </ul></li>
+    <li>注册表或者文件路径存在很多反斜杠(<code>\</code>)， 使用<strong>双中括号</strong>抱起来，可直接使用<code>[[path\to\file]]</code>。</li>
+    <li>使用<strong>双点符号</strong>(<code>..</code>)可以将字符串进行拼接(也可以使用<a href="https://www.lua.org/manual/5.1/manual.html#pdf-string.format">string.format</a>函数)。</li>
+</ul>
+
+<p><br>
+还可通过编辑 <code>WinXShell.lua</code> 加载自定义扩展模块，功能函数。
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="_______os____"></a>扩展 os 库 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "os.putenv"></a>
+    <strong>os.putenv (var, value)</strong>
+    </dt>
+    <dd>
+    设置 环境变量
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">var</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         变量名
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         变量值
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "os.info"></a>
+    <strong>os.info (key)</strong>
+    </dt>
+    <dd>
+    获取 系统信息
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+<p> 信息名</p>
+
+<ul>
+    <li><code>Version</code> - 获取 系统版本信息</li>
+    <li>从注册表获取 ProductName, CSDVersion 信息</li>
+    <li><code>WinVer</code> - 获取 系统版本信息
+    <ul>
+        <li>返回 包含多个系统版本<strong>数组</strong></li>
+        <li><code>[&apos;ver&apos;]</code> - 包含4级别的完整版本信息</li>
+        <li><code>[1]</code> - 1级版本号 (整数)</li>
+        <li><code>[2]</code> - 2级版本号 (整数)</li>
+        <li><code>[3]</code> - 3级版本号 (整数)</li>
+        <li><code>[4]</code> - 4级版本号 (整数)</li>
+        <li><code>[&apos;1.2&apos;]</code> - 主次版本号 (字符串)</li>
+    </ul></li>
+    <li><code>CPU</code> - 处理器信息
+    <ul>
+        <li>返回 包含多个处理器信息的<strong>数组</strong></li>
+        <li><code>[&apos;name&apos;]</code> - 名称</li>
+        <li><code>[&apos;~MHz&apos;]</code> - 速度 (整数, 单位 MHz)</li>
+    </ul></li>
+    <li><code>Mem</code> - 内存信息
+    <ul>
+        <li>返回 包含多个内存信息的<strong>数组</strong></li>
+        <li>系统可用内存(硬件以外); 总内存大小; 当前可用内存</li>
+        <li><code>[&apos;total&apos;]</code> - 总内存大小 (整数, 单位 字节)</li>
+        <li><code>[&apos;used&apos;]</code> - 当前已使用内存 (整数, 单位 字节)</li>
+        <li><code>[&apos;avail&apos;]</code> - 当前可用内存 (整数, 单位 字节)</li>
+        <li><code>[&apos;total_gb&apos;]</code> - 总内存大小 (整数, 单位 GB)</li>
+        <li><code>[&apos;used_gb&apos;]</code> - 当前已使用内存 (浮点数, 单位 GB)</li>
+        <li><code>[&apos;avail_gb&apos;]</code> - 当前可用内存 (浮点数, 单位 GB)</li>
+        <li><code>[&apos;used%&apos;]</code> - 当前已使用内存 (浮点数, 百分比)</li>
+    </ul></li>
+    <li><code>Copyright</code> - 版权信息</li>
+    <li><code>LangId</code> - 系统语言识别号</li>
+    <li><code>LocaleName</code> - 系统语言名</li>
+    <li><code>TickCount</code> - 系统启动后经历的时间 (毫秒)</li>
+    <li><code>FirmwareType</code>  - 启动模式</li>
+    <li><code>IsUEFIMode</code>    - 是否是 UEFI 启动模式</li>
+    <li><code>IsWinPE</code>       - 是否是在 Windows PE 环境</li>
+</ul>
+
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="comment">-- WinXShell.exe -script info.lua
+</span><span class="comment">-- info.lua
+</span>
+<span class="keyword">local</span> v = <span class="global">os</span>.info(<span class="string">'WinVer'</span>)
+v.ver <span class="comment">---&gt; '10.0.19044.1586'
+</span>v[<span class="string">'ver'</span>] <span class="comment">---&gt; '10.0.19044.1586'
+</span>v[<span class="number">1</span>] <span class="comment">---&gt; 10
+</span>v[<span class="number">2</span>] <span class="comment">---&gt; 0
+</span>v[<span class="number">3</span>] <span class="comment">---&gt; 19044
+</span>v[<span class="number">4</span>] <span class="comment">---&gt; 1586
+</span>v[<span class="string">"1.2"</span>]  <span class="comment">---&gt; '10.0'
+</span>
+
+<span class="keyword">local</span> cpu_info = <span class="global">os</span>.info(<span class="string">'CPU'</span>)
+cpu_info[<span class="string">'name'</span>]
+<span class="comment">---&gt; 'Intel(R) Core(TM) i5-6600K CPU @ 3.50GHz'
+</span>cpu_info[<span class="string">'~MHz'</span>]
+<span class="comment">---&gt; 3504
+</span>
+
+<span class="keyword">local</span> mem = <span class="global">os</span>.info(<span class="string">'Mem'</span>)
+<span class="global">print</span>(mem[<span class="string">'total'</span>], mem[<span class="string">'used'</span>], mem[<span class="string">'avail'</span>], mem[<span class="string">'used%'</span>])
+<span class="comment">---&gt; 17129684992     3752480768      13377204224     22.0
+</span>
+<span class="global">print</span>(<span class="global">string</span>.format(<span class="string">"Total: %d GB, Used: %.2f GB, Avail: %.2f GB, Used: %.1f %%"</span>,
+    mem[<span class="string">'total_gb'</span>], mem[<span class="string">'used_gb'</span>], mem[<span class="string">'avail_gb'</span>], mem[<span class="string">'used%'</span>]))
+
+<span class="comment">---&gt; Total: 16 GB, Used: 3.49 GB, Avail: 12.46 GB, Used: 22.0 %
+</span>
+<span class="global">os</span>.info(<span class="string">'Copyright'</span>)
+<span class="comment">---&gt; (c) Microsoft Corporation。保留所有权利。
+</span>
+<span class="global">os</span>.info(<span class="string">'LangId'</span>)
+<span class="comment">---&gt; '2052'
+</span>
+<span class="global">os</span>.info(<span class="string">'Locale'</span>)
+<span class="comment">---&gt; 'zh-CN'
+</span>
+<span class="global">os</span>.info(<span class="string">'FirmwareType'</span>)
+<span class="comment">---&gt; 'UEFI'
+</span>
+<span class="global">os</span>.info(<span class="string">'IsUEFIMode'</span>)
+<span class="comment">---&gt; 1
+</span>
+<span class="global">os</span>.info(<span class="string">'IsWinPE'</span>)
+<span class="comment">---&gt; 0</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "os.exec"></a>
+    <strong>os.exec ([opt], cmd)</strong>
+    </dt>
+    <dd>
+    执行外部命令
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">opt</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+<p> 启动选项
+可以是以下启动选项中的一个或多个的组合:</p>
+
+<ul>
+    <li><code>/hide</code>  隐藏窗口启动</li>
+    <li><code>/wait</code>  等待程序执行结束</li>
+    <li><code>/min</code>   最小化窗口启动</li>
+    <li><code>/max</code>   最大化窗口启动</li>
+    <li><code>/admin</code> 要求管理员权限启动</li>
+</ul>
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">cmd</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         命令行(含参数)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">exec(<span class="string">'cmd.exe /k echo hello'</span>)
+exec(<span class="string">'/hide /wait'</span>, <span class="string">'PETools.cmd PETools.7z'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "os.link"></a>
+    <strong>os.link (lnk, target[, param[, icon[, index[, showcmd]]]])</strong>
+    </dt>
+    <dd>
+    创建 快捷方式
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lnk</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         指定要创建的快捷方式的路径
+        </li>
+        <li><span class="parameter">target</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         快捷方式的目标路径
+        </li>
+        <li><span class="parameter">param</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         程序执行参数
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">icon</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         指定任务栏图标(ico文件，或者包含图标的资源文件)
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">int</span></span>
+         图标索引号
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">showcmd</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         启动参数
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">os</span>.link(<span class="string">[[D:\Tools\Everything.lnk]]</span>, <span class="string">[[%ProgramFile%\Everything\Everything.exe]]</span>)
+<span class="global">os</span>.link((<span class="string">[[D:\Tools\Hello.lnk]]</span>, <span class="string">'cmd.exe'</span>, <span class="string">'/k echo hello'</span>, <span class="string">'shell32.dll'</span>, <span class="number">27</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "os.rundll"></a>
+    <strong>os.rundll (dllfile, funcname[, param1[, param2[, ...]]])</strong>
+    </dt>
+    <dd>
+    调用 dll 中的公开函数
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dllfile</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         dll文件路径
+        </li>
+        <li><span class="parameter">funcname</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         函数名
+        </li>
+        <li><span class="parameter">param1</span>
+         函数参数
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">param2</span>
+         函数参数
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+         函数参数
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="comment">-- SHEmptyRecycleBinA - 清空指定驱动器上的回收站。
+</span>
+<span class="comment">-- SHEmptyRecycleBinA(HWND hwnd, LPCSTR pszRootPath, DWORD dwFlags);
+</span>
+<span class="comment">-- 参数
+</span><span class="comment">-- DWORD dwFlags
+</span>SHERB_NOCONFIRMATION = <span class="number">1</span>
+<span class="comment">-- 不会显示任何确认删除对象的对话框。
+</span>SHERB_NOPROGRESSUI = <span class="number">2</span>
+<span class="comment">-- 不显示指示进度的对话框。
+</span>SHERB_NOSOUND = <span class="number">4</span>
+<span class="comment">-- 操作完成后不会播放任何声音。
+</span><span class="comment">-- https://learn.microsoft.com/en-us/windows/win32/api/shellapi/nf-shellapi-shemptyrecyclebina
+</span>
+<span class="comment">-- 清空所有驱动器上的所有回收站，第三个参数 dwFlags 为 0, 不进行特别设置，
+</span><span class="comment">-- 将弹出是否清空回收站提示，清空时显示进度对话框，且清空时有清空操作音效。
+</span><span class="global">os</span>.rundll(<span class="string">'shell32.dll'</span>,<span class="string">'SHEmptyRecycleBinA'</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>)</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="_______string____"></a>扩展 string 库 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "string.envstr"></a>
+    <strong>string.envstr (str)</strong>
+    </dt>
+    <dd>
+    展开 环境变量
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         包含环境变量引用的字符串
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">string</span>.envstr(<span class="string">'%ProgramFiles%\WinXShell\WinXShell.exe'</span>)
+<span class="comment">---&gt; X:\Program Files\WinXShell\WinXShell.exe
+</span><span class="keyword">local</span> str1 = <span class="string">[[%SystemRoot%\System32\regedit.exe]]</span>
+str1:envstr() <span class="comment">---&gt; C:\Windows\System32\regedit.exe</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "string.resstr"></a>
+    <strong>string.resstr (str)</strong>
+    </dt>
+    <dd>
+    展开 字符串资源
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">str</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         包含字符串资源引用的字符串
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">string</span>.resstr(<span class="string">'#{@shell32.dll,9315}'</span>) <span class="comment">---&gt; 本地磁盘
+</span><span class="keyword">local</span> str2 = <span class="string">'#{@shell32.dll,9316}'</span>
+str2:resstr() <span class="comment">---&gt; DVD 驱动器</span></pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="_______math____"></a>扩展 math 库 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "math.band"></a>
+    <strong>math.band (a, b)</strong>
+    </dt>
+    <dd>
+    进行 位与运算
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+            <span class="types"><span class="type">int</span></span>
+         操作数 a
+        </li>
+        <li><span class="parameter">b</span>
+            <span class="types"><span class="type">int</span></span>
+         操作数 b
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="global">math</span>.band(<span class="number">5</span>, <span class="number">6</span>) <span class="comment">---&gt; 4</span></pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="_______lua_______"></a>扩展 lua 函数 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "exec"></a>
+    <strong>exec ()</strong>
+    </dt>
+    <dd>
+    执行外部命令
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#os.exec">os.exec</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "link"></a>
+    <strong>link ()</strong>
+    </dt>
+    <dd>
+    创建 快捷方式
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#os.link">os.link</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "wxsUI"></a>
+    <strong>wxsUI (ui[, jcfg[, param]])</strong>
+    </dt>
+    <dd>
+    打开 指定的UI组件
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ui</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         组件名
+        </li>
+        <li><span class="parameter">jcfg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         启动配置文件
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">param</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         启动参数
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="_______lua_______"></a>扩展 lua 对象 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "App"></a>
+    <strong>App</strong>
+    </dt>
+    <dd>
+    <a href="../classes/App.html#">App</a>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shell"></a>
+    <strong>Shell</strong>
+    </dt>
+    <dd>
+    <a href="../classes/Shell.html#">Shell</a>
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "System"></a>
+    <strong>System</strong>
+    </dt>
+    <dd>
+    <a href="../classes/System.html#">System</a>
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Deprecated__________"></a>Deprecated 已弃用 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "win_copyright"></a>
+    <strong>win_copyright ()</strong>
+    </dt>
+    <dd>
+    已弃用。获取 Windows 许可证说明
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#os.info">os.info</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "cpu_info"></a>
+    <strong>cpu_info ()</strong>
+    </dt>
+    <dd>
+    已弃用。获取 CPU 信息(注册表)
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#os.info">os.info</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "mem_info"></a>
+    <strong>mem_info ()</strong>
+    </dt>
+    <dd>
+    已弃用。获取 内存信息
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#os.info">os.info</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "res_str"></a>
+    <strong>res_str (file, id)</strong>
+    </dt>
+    <dd>
+    已弃用。获取 资源文件中的字符串信息
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">file</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         资源文件
+        </li>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         资源号
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#string.resstr">string.resstr</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "call_dll"></a>
+    <strong>call_dll ()</strong>
+    </dt>
+    <dd>
+    已弃用。调用 dll 中的公开函数
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../libraries/Lua-Engine.html#os.rundll">os.rundll</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "CloseShellWindow"></a>
+    <strong>CloseShellWindow ()</strong>
+    </dt>
+    <dd>
+    已弃用。关闭 外壳窗口
+ 外壳窗口不存在时，将等待外壳窗口出现后再关闭
+
+
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/Shell.html#Shell:WaitAndClose">Shell:WaitAndClose</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "MinimizeWindow"></a>
+    <strong>MinimizeWindow (class, title)</strong>
+    </dt>
+    <dd>
+    已弃用。最小化 指定窗口
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">class</span>
+
+
+
+        </li>
+        <li><span class="parameter">title</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/System.html#System.Proc">System.Proc</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "HideWindow"></a>
+    <strong>HideWindow (class, title)</strong>
+    </dt>
+    <dd>
+    已弃用。隐藏 指定窗口
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">class</span>
+
+
+
+        </li>
+        <li><span class="parameter">title</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/System.html#System.Proc">System.Proc</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "CloseWindow"></a>
+    <strong>CloseWindow (class, title)</strong>
+    </dt>
+    <dd>
+    已弃用。关闭 指定窗口
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">class</span>
+
+
+
+        </li>
+        <li><span class="parameter">title</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../classes/System.html#System.Proc">System.Proc</a>
+    </ul>
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="https://github.com/lunarmodules/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

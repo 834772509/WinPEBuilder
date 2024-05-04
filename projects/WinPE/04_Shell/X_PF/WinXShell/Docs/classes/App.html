@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>WinXShell 文档</title>
+    <link rel="stylesheet" href="../ldoc_fixed.css" type="text/css" />
+    <link rel="stylesheet" href="../ldoc_custom.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>WinXShell</h1>
+
+<ul>
+  <li><a href="#">Project</a></li>
+  <li><a href="../index.html">Documentation</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#______">方法 </a></li>
+<li><a href="#____________">事件函数 </a></li>
+</ul>
+
+
+<h2>Classes</h2>
+<ul class="nowrap">
+  <li><strong>App</strong></li>
+  <li><a href="../classes/Shell.html">Shell</a></li>
+  <li><a href="../classes/System.html">System</a></li>
+</ul>
+<h2>Libraries</h2>
+<ul class="nowrap">
+  <li><a href="../libraries/Lua-Engine.html">Lua-Engine</a></li>
+  <li><a href="../libraries/UI-Engine.html">UI-Engine</a></li>
+  <li><a href="../libraries/Windows-Shell.html">Windows-Shell</a></li>
+</ul>
+<h2>Program</h2>
+<ul class="nowrap">
+  <li><a href="../program/WinXShell.html">WinXShell</a></li>
+</ul>
+<h2>Manual</h2>
+<ul class="nowrap">
+  <li><a href="../manual/csidl.md.html">CSIDL</a></li>
+  <li><a href="../manual/history.md.html">更新历史记录</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Class <code>App</code></h1>
+<p>App 对象</p>
+<p>
+
+</p>
+
+
+<h2><a href="#______">方法 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#App:Info">App:Info (key)</a></td>
+	<td class="summary">获取 信息</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:Exec">App:Exec ()</a></td>
+	<td class="summary">调用 子程序 (等待程序结束)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:Run">App:Run ()</a></td>
+	<td class="summary">启动 程序 (不等待)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:Sleep">App:Sleep (ms)</a></td>
+	<td class="summary">暂停 当前进程(线程)执行, 用于等待或者延时处理</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:SetTimer">App:SetTimer (id, interval)</a></td>
+	<td class="summary">注册 计时器</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:KillTimer">App:KillTimer (id)</a></td>
+	<td class="summary">结束 计时器</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:Print">App:Print (...)</a></td>
+	<td class="summary">输出 信息</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:JCfg">App:JCfg (section, key1[, key2[, ...]])</a></td>
+	<td class="summary">获取 WinXShell.jcfg中的配置参数</td>
+	</tr>
+</table>
+<h2><a href="#____________">事件函数 </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#App:OnLoad">App:OnLoad ()</a></td>
+	<td class="summary">程序启动事件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:OnDaemon">App:OnDaemon ()</a></td>
+	<td class="summary">作为常驻进程时，启动事件</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#App:OnTimer">App:OnTimer ()</a></td>
+	<td class="summary">计时器事件</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="______"></a>方法 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "App:Info"></a>
+    <strong>App:Info (key)</strong>
+    </dt>
+    <dd>
+    获取 信息
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+<p> 信息名</p>
+
+<ul>
+    <li><code>CmdLine</code> - 命令行</li>
+    <li><code>Path</code>          - 程序所在目录</li>
+    <li><code>Name</code>          - 程序文件名</li>
+    <li><code>FullName</code>      - 程序完整路径名</li>
+    <li><code>IsShell</code>       - 是否WinXShell作为系统外壳程序</li>
+</ul>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        请查看实例代码
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="comment">-- WinXShell.exe -script info.lua
+</span><span class="comment">-- info.lua
+</span> App:Info(<span class="string">'CmdLine'</span>)
+ <span class="comment">---&gt; '-script info.lua'
+</span>
+App:Info(<span class="string">'Path'</span>)
+ <span class="comment">---&gt; C:\Program Files\WinXShell
+</span>
+App:Info(<span class="string">'Name'</span>)
+ <span class="comment">---&gt; WinXShell.exe
+</span>
+App:Info(<span class="string">'FullName'</span>)
+ <span class="comment">---&gt; C:\Program Files\WinXShell\WinXShell.exe
+</span>
+App:Info(<span class="string">'IsShell'</span>)
+ <span class="comment">---&gt; 0</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "App:Exec"></a>
+    <strong>App:Exec ()</strong>
+    </dt>
+    <dd>
+    调用 子程序 (等待程序结束)
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:Run"></a>
+    <strong>App:Run ()</strong>
+    </dt>
+    <dd>
+    启动 程序 (不等待)
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:Sleep"></a>
+    <strong>App:Sleep (ms)</strong>
+    </dt>
+    <dd>
+    暂停 当前进程(线程)执行, 用于等待或者延时处理
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ms</span>
+            <span class="types"><span class="type">int</span></span>
+         暂停时间 (毫秒)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">WinXShell.exe -console -code App:Sleep(<span class="number">5000</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "App:SetTimer"></a>
+    <strong>App:SetTimer (id, interval)</strong>
+    </dt>
+    <dd>
+    注册 计时器
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         计时器标识号 (请使用 <span style="color:red"><strong>TID_USER + 数字形式</strong></span> 设置，
+ <br><span style="color:blue">小于 <strong>TID_USER (20000)</strong></span> 以下的标识号作为程序内部计时器标识号)
+        </li>
+        <li><span class="parameter">interval</span>
+            <span class="types"><span class="type">int</span></span>
+         时间间隔 (毫秒)
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> TID_REFRESH_APP = TID_USER + <span class="number">1</span>        <span class="comment">-- TID_USER = 20000
+</span>App:SetTimer(TID_REFRESH_APP, <span class="number">2000</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "App:KillTimer"></a>
+    <strong>App:KillTimer (id)</strong>
+    </dt>
+    <dd>
+    结束 计时器
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         计时器标识号
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:Print"></a>
+    <strong>App:Print (...)</strong>
+    </dt>
+    <dd>
+    输出 信息
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:JCfg"></a>
+    <strong>App:JCfg (section, key1[, key2[, ...]])</strong>
+    </dt>
+    <dd>
+    获取 WinXShell.jcfg中的配置参数
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">section</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         段名
+        </li>
+        <li><span class="parameter">key1</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         项目名
+        </li>
+        <li><span class="parameter">key2</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         项目名
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">...</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="____________"></a>事件函数 </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "App:OnLoad"></a>
+    <strong>App:OnLoad ()</strong>
+    </dt>
+    <dd>
+    程序启动事件
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:OnDaemon"></a>
+    <strong>App:OnDaemon ()</strong>
+    </dt>
+    <dd>
+    作为常驻进程时，启动事件
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "App:OnTimer"></a>
+    <strong>App:OnTimer ()</strong>
+    </dt>
+    <dd>
+    计时器事件
+
+
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="https://github.com/lunarmodules/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
