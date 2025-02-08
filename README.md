@@ -144,3 +144,18 @@ call RegCopyEx Classes Msi.Package,Msi.Path
 ```batch
 call AddEnv %X%\Windows\tools
 ```
+
+### X2X
+
+将当前目录中的`特定目录`内的所有文件复制到基础镜像中的指定位置，以下为特定目录所对应的路径。
+
+- `X`: `\`
+- `X_WIN`: `\Windows\`
+- `X_SYS`: `\Windows\System32`
+- `X_PF`: `\Program Files`
+- `X_PF(x86)`: `\Program Files(x86)`
+- `X_Desktop`: `\Users\Default\Desktop`
+
+```batch
+call X2X
+```
