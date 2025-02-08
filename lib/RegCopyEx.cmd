@@ -1,11 +1,3 @@
-rem 宏: 扩展复制注册表项
-
-rem 用法:
-rem   RegCopyEx Services NlaSvc
-rem   RegCopyEx Services WPDBusEnum,WpdUpFltr,WudfPf,WUDFRd
-rem   RegCopyEx Classes .msi
-rem   RegCopyEx Classes Msi.Package,Msi.Path
-
 if "x%~2"=="x" goto :EOF
 echo [MACRO]RegCopyEx %*
 
@@ -22,4 +14,3 @@ goto :EOF
 :COPY_CLASSES
 for %%i in (%~2) do call RegCopy SOFTWARE\Classes\%%i
 goto :EOF
-

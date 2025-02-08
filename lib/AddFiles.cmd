@@ -1,23 +1,9 @@
-rem 宏: 增加文件
-rem 分析语法, 通过文件列表删除文件
+﻿echo [MACRO]AddFiles %*
+if "x%APP_TMP_PATH%"=="x" (
+  echo 临时目录不存在，执行出错
+  goto :EOF
+)
 
-rem 用法：
-rem 单行增加文件
-rem   call AddFiles \Windows\System32\config\SOFTWARE
-rem   call AddFiles \Windows\System32\dm*.dll
-rem   call AddFiles "\windows\system32\devmgmt.msc,devmgr.dll"
-
-rem 多行增加文件
-rem   call AddFiles %0 :end_files
-rem   goto :end_files
-rem   ; Explorer
-rem   \Windows\explorer.exe
-rem   \Windows\??-??\explorer.exe.mui
-rem   ; ...
-rem   :end_files
-
-echo [MACRO]AddFiles %*
-if "x%APP_TMP_PATH%"=="x" goto :EOF
 setlocal enabledelayedexpansion
 
 if "x%ADDFILES_INITED%"=="x" (
@@ -32,37 +18,40 @@ if "x%ADDFILES_INITED%"=="x" (
 type nul>"%APP_TMP_PATH%\AddFiles.txt"
 
 if "%~2"=="" (
-  set code_file=
-  set code_word=%1
+  set "code_file="
+  set "code_word=%~1"
 ) else (
-  set code_file=%~1
-  set code_word=%2
+  set "code_file=%~1"
+  set "code_word=%2"
 )
 
+rem single line mode
 if "%code_file%"=="" (
   for %%F in ("%code_word%") do set "g_path=%%~pF"
   call :parser "%code_word%"
-) else (
-  set "strStartCode=goto !code_word!"
-  set "strEndCode=!code_word!"
+)
 
-  if "!code_word:~0,2!"==":[" (
-    set "strStartCode=!code_word!"
-    set "strEndCode=goto :EOF"
-  )
+rem multi line mode
+set "strStartCode=goto !code_word!"
+set "strEndCode=!code_word!"
 
-  set bCode=0
-  for /f "delims=" %%i in (!code_file!) do (
-    set line=%%i
+if "!code_word:~0,2!"==":[" (
+  set "strStartCode=!code_word!"
+  set "strEndCode=goto :EOF"
+)
 
-    if /i "!line!"=="!strStartCode!" (
-      set bCode=1
-    ) else (
-      if /i "!line!"=="!strEndCode!" goto :end
-      if !bCode!==1 call :parser "!line!"
-    )
+set bCode=0
+for /f "delims=" %%i in (!code_file!) do (
+  set "line=%%i"
+
+  if /i "!line!"=="!strStartCode!" (
+    set bCode=1
+  ) else (
+    if /i "!line!"=="!strEndCode!" goto :end
+    if !bCode!==1 call :parser "!line!"
   )
 )
+
 :end
 
 rem extract AddFiles.txt to mounted directory with wimlib
@@ -70,7 +59,7 @@ wimlib-imagex.exe extract %APP_SRC% %APP_SRC_INDEX% @"%APP_TMP_PATH%\AddFiles.tx
 goto :EOF
 
 :parser
-set line=%~1
+set "line=%~1"
 
 rem empty line
 if "%line%"=="" goto :EOF
@@ -83,7 +72,7 @@ if "%line:~-1,1%"=="\" set "g_path=%line%" && goto :EOF
 
 set output=
 for /f "delims=" %%F in ("%line%") do (
-  call :addfile %%F
+  for %%I in (%%F) do call :addfile %%I
 )
 goto :EOF
 

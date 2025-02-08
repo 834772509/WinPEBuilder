@@ -1,10 +1,3 @@
-rem 宏: RegCopy
-rem 复制源镜像的注册表项至基础镜像 HKLM\Src_XXX => HKLM\Tmp_XXX
-
-rem 用法：
-rem   RegCopy [/-s] HKLM\System\ControlSet001\Services\NlaSvc
-rem   RegCopy [/-s] HKLM\Software\Microsoft\Windows\CurrentVersion\SideBySide\Winners *_microsoft.vc90.crt_*
-
 set _rcopt_subkey=/s
 if /i "x%~1"=="x/-s" (
   set _rcopt_subkey=

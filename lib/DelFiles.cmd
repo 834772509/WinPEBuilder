@@ -1,24 +1,3 @@
-rem 宏: 删除文件
-rem 分析语法, 通过文件列表删除文件
-
-rem 用法：
-rem 单行删除文件
-rem   call DelFiles \Windows\System32\winpe.jpg
-rem   call DelFiles \Windows\System32\*.jpg
-rem   call DelFiles "\windows\system32\winpe.jpg,winre.jpg"
-
-rem 多行删除文件
-rem   call DelFiles %0 :end_files
-rem   goto :end_files
-rem   ; 完整路径
-rem   \Windows\System32\winpe.jpg
-rem   \Windows\System32\winre.jpg
-rem   ; 简写文件名
-rem   \Windows\System32\
-rem   winpe.jpg
-rem   winre.jpg
-rem   :end_files
-
 echo [MACRO]DelFiles %*
 setlocal enabledelayedexpansion
 
@@ -26,34 +5,37 @@ if "%~2"=="" (
   set "code_file="
   set "code_word=%~1"
 ) else (
-  set "code_file=%1"
+  set "code_file=%~1"
   set "code_word=%2"
 )
 
+rem single line mode
 if "%code_file%"=="" (
   for %%F in ("%code_word%") do set "g_path=%%~pF"
   call :parser "%code_word%"
-) else (
-  set "strStartCode=goto !code_word!"
-  set "strEndCode=!code_word!"
+)
 
-  if "!code_word:~0,2!"==":[" (
-    set "strStartCode=!code_word!"
-    set "strEndCode=goto :EOF"
-  )
+rem multi line mode
+set "strStartCode=goto !code_word!"
+set "strEndCode=!code_word!"
 
-  set bCode=0
-  for /f "delims=" %%i in (!code_file!) do (
-    set "line=%%i"
+if "!code_word:~0,2!"==":[" (
+  set "strStartCode=!code_word!"
+  set "strEndCode=goto :EOF"
+)
 
-    if /i "!line!"=="!strStartCode!" (
-      set bCode=1
-    ) else (
-      if /i "!line!"=="!strEndCode!" goto :EOF
-      if !bCode!==1 call :parser "!line!"
-    )
+set bCode=0
+for /f "delims=" %%i in (!code_file!) do (
+  set "line=%%i"
+
+  if /i "!line!"=="!strStartCode!" (
+    set bCode=1
+  ) else (
+    if /i "!line!"=="!strEndCode!" goto :EOF
+    if !bCode!==1 call :parser "!line!"
   )
 )
+
 goto :EOF
 
 :parser

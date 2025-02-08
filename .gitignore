@@ -1,0 +1,53 @@
+# 忽略所有临时文件和目录
+*.tmp
+*.temp
+*.log
+*.bak
+*.cache
+*.swp
+*.swo
+
+# 忽略构建输出目录
+/target/
+/build/
+/output/
+
+# 忽略本地配置文件（如 IDE 或编辑器配置）
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.iml
+
+# 忽略 Windows 系统文件和目录
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# 忽略 PE 构建过程中生成的临时文件
+/mount/
+
+# 忽略 Git 相关文件（如 Git 钩子）
+/.git/
+/.gitattributes
+/.gitmodules
+
+# 忽略日志文件
+*.log
+/logs/
+
+# 忽略用户自定义配置文件（如本地路径配置）
+/config.local.*
+/settings.local.*
+
+# 忽略镜像文件
+*.iso
+*.wim
+
+# 忽略引用素材
+/ref/
+
+# 忽略测试文件
+/tests/
+/lib/tests/
+test.cmd

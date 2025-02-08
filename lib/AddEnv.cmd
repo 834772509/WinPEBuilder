@@ -1,7 +1,3 @@
-rem 宏: 增加环境变量
-
-rem 用法：AddEnv %X%\Windows\tools
-
 echo [MACRO]AddEnvVar %*
 
 for /f "tokens=2*" %%a in ('reg query "HKLM\Tmp_DEFAULT\Environment" /v "Path"') do (
