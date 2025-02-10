@@ -17,6 +17,22 @@ WinPEBuilder 是用于构建 WindowsPE 的批处理库，内含常用的宏命�
 5. 导出镜像及清理
 6. 项目完成
 
+### 注册表挂载路径
+
+- 基础镜像：
+
+  - `SOFTWARE`: `HKLM\Tmp_SOFTWARE`
+  - `SYSTEM`: `HKLM\Tmp_SYSTEM`
+  - `DEFAULT`: `HKLM\Tmp_DEFAULT`
+  - `DRIVERS`: `HKLM\Tmp_DRIVERS`
+
+- 安装镜像：
+
+  - `SOFTWARE`: `HKLM\Src_SOFTWARE`
+  - `SYSTEM`: `HKLM\Src_SYSTEM`
+  - `DEFAULT`: `HKLM\Src_DEFAULT`
+  - `DRIVERS`: `HKLM\Src_DRIVERS`
+
 ### 内置环境变量
 
 WinPEBuilder 中内置了许多环境变量，可直接在脚本中进行使用。
@@ -92,7 +108,7 @@ WinPEBuilder 中内置了许多环境变量，可直接在脚本中进行使用�
 
 删除文件，从基础镜像中删除指定列表文件。
 
-- 单行删除文件
+- 单行删除文件（注意：多个文件或文件中含有空格需要使用引号包裹）
 
   ```batch
   call DelFiles \Windows\System32\winpe.jpg
@@ -143,4 +159,19 @@ call RegCopyEx Classes Msi.Package,Msi.Path
 
 ```batch
 call AddEnv %X%\Windows\tools
+```
+
+### X2X
+
+将当前目录中的`特定目录`内的所有文件复制到基础镜像中的指定位置，以下为特定目录所对应的路径。
+
+- `X`: `\`
+- `X_WIN`: `\Windows\`
+- `X_SYS`: `\Windows\System32`
+- `X_PF`: `\Program Files`
+- `X_PF(x86)`: `\Program Files(x86)`
+- `X_Desktop`: `\Users\Default\Desktop`
+
+```batch
+call X2X
 ```

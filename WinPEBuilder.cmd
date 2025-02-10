@@ -104,13 +104,13 @@ set "SRC_PATH=%cd%\target\install"
 set "APP_TMP_PATH=%cd%\target\temp"
 set "PROJECT_PATH=%cd%\projects\%PROJECT_NAME%"
 set "BUILD_WIM=%cd%\target\boot.wim"
-set APP_PE_LANG=zh-CN
+set "APP_PE_LANG=zh-CN"
 
 set "X=%cd%\target\mounted"
-set X_WIN=%X%\Windows
-set X_SYS=%X_WIN%\System32
-set X_WOW64=%X_WIN%\SysWOW64
-set X_Desktop=%X%\Users\Default\Desktop
+set "X_WIN=%X%\Windows"
+set "X_SYS=%X_WIN%\System32"
+set "X_WOW64=%X_WIN%\SysWOW64"
+set "X_Desktop=%X%\Users\Default\Desktop"
 
 if not exist "%X%" mkdir "%X%"
 if not exist "%APP_TMP_PATH%" mkdir "%APP_TMP_PATH%"
@@ -167,6 +167,7 @@ Dism /Unmount-Image /MountDir:"%X%" /commit
 
 rem 导出镜像
 echo \033[93;46m [构建] 正在导出WinPE镜像...... | CmdColor.exe
+if exist "%BUILD_WIM%" del /A /F /Q "%BUILD_WIM%"
 rem wimlib-imagex.exe export "%APP_BASE_PATH%" %APP_BASE_INDEX% "%BUILD_WIM%" --boot
 Dism /Export-Image /SourceImageFile:"%APP_BASE_PATH%" /SourceIndex:%APP_BASE_INDEX% /DestinationImageFile:"%BUILD_WIM%" /Bootable
 
