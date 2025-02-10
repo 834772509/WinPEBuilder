@@ -50,17 +50,25 @@ if "%line:~0,1%"==";" goto :EOF
 rem mutil lines
 if "%line:~-1,1%"=="\" set "g_path=%line%" && goto :EOF
 
-for %%F in (%line%) do call :delfile "%%F"
+for %%a in ("%line:,=","%") do (
+  set "part=%%~a"
+  call :delfile "!part!"
+)
 goto :EOF
 
 :delfile
 set "fn=%~1"
 if not "%fn:~0,1%"=="\" set "fn=%g_path%%fn%"
+if not exist "%X%\%fn%" goto :EOF
 
-rem delete file
-del /f /a /q "%X%\%fn%" && (
+dir/ad "%X%\%fn%" >nul 2>nul && (
+  rem delete dir
+  rd /s /q "%X%\%fn%"
+)|| (
+  rem delete file
+  del /f /a /q "%X%\%fn%"
+
   for %%F in ("%fn%") do set "name=%%~nxF"
-  
   rem delete mui file
   if /i "%fn:~0,18%"=="\Windows\System32\" del /f /a /q "%X%\Windows\System32\%APP_PE_LANG%\%name%.mui"2>nul
   if /i "%fn:~0,18%"=="\Windows\SysWOW64\" del /f /a /q "%X%\Windows\SysWOW64\%APP_PE_LANG%\%name%.mui"2>nul
