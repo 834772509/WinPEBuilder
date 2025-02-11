@@ -31,13 +31,13 @@ if "x%APP_RUNAS_TI%"=="x" (
 )
 
 :cui
-set /p cddir=输入虚拟光驱盘符（不需要冒号）：
+set /p cddir=输入虚拟光驱盘符：
 if "%cddir%"=="" (echo 没有输入虚拟光驱盘符&cmd /k)
-if exist "%cddir%:\sources\install.wim" (
-  set APP_SRC=%cddir%:\sources\install.wim
+if exist "%cddir:~,1%:\sources\install.wim" (
+  set APP_SRC=%cddir:~,1%:\sources\install.wim
 ) else (
-  if exist "%cddir%:\sources\install.esd" (
-    set APP_SRC=%cddir%:\sources\install.esd
+  if exist "%cddir:~,1%:\sources\install.esd" (
+    set APP_SRC=%cddir:~,1%:\sources\install.esd
   ) else (
     echo 没找到 install.wim 和 install.esd
     cmd /k
@@ -86,7 +86,7 @@ if "%bore%"=="" (set bore=2&echo 没有选择 wim,已自动选择 winre.wim)
 if "%bore%" geq "3" (echo 没有选择对应的项目&cmd /k)
 
 if "%bore%"=="1" (
-  copy /y "%cddir%:\sources\boot.wim" "%cd%\target\base.wim"
+  copy /y "%cddir:~,1%:\sources\boot.wim" "%cd%\target\base.wim"
   set "APP_BASE_PATH=%cd%\target\base.wim"
   set APP_BASE_INDEX=2
 )
