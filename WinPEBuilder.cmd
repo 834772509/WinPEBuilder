@@ -46,8 +46,10 @@ if exist "%cddir:~,1%:\sources\install.wim" (
 echo ————————————————————————————————————————————————
 for /f "tokens=2 delims=: " %%a in ('Dism.exe /English /Get-WimInfo /WimFile:"%APP_SRC%" ^| findstr /i Index') do (
   for /f "tokens=2 delims=:" %%b in ('Dism.exe /English /Get-WimInfo /WimFile:"%APP_SRC%" /Index:%%a ^| findstr /i Name') do (set Name=%%b)
-  for /f "tokens=2 delims=:" %%c in ('Dism.exe /English /Get-WimInfo /WimFile:"%APP_SRC%" /Index:%%a ^| findstr /i Architecture') do (set Architecture=%%c)
-  echo  %%a	!Name! !Architecture!
+  for /f "tokens=2 delims=:" %%c in ('Dism.exe /English /Get-WimInfo /WimFile:"%APP_SRC%" /Index:%%a ^| findstr /i Version') do (set Version=%%c)
+  for /f "tokens=3 delims=: " %%d in ('Dism.exe /English /Get-WimInfo /WimFile:"%APP_SRC%" /Index:%%a ^| findstr /i Build') do (set Build=%%d)
+  for /f "tokens=2 delims=:" %%e in ('Dism.exe /English /Get-WimInfo /WimFile:"%APP_SRC%" /Index:%%a ^| findstr /i Architecture') do (set Architecture=%%e)
+  echo  %%a	!Name! !Version!.!Build! !Architecture!
   set index=%%a
 )
 echo ————————————————————————————————————————————————
