@@ -1,4 +1,4 @@
-﻿echo [MACRO]AddFiles %*
+echo [MACRO]AddFiles %*
 if "x%APP_TMP_PATH%"=="x" (
   echo 临时目录不存在，执行出错
   goto :EOF
