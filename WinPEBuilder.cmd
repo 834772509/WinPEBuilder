@@ -82,10 +82,15 @@ echo 提取基础wim镜像
 echo ————————————————————————————————————————————————
 echo  1     boot.wim (卷2) (适用于Boot修订号同步的镜像)
 echo  2     winre.wim (卷1) (适用于winre修订号同步的镜像)
+echo        自定义基础镜像 (卷1)
 echo ————————————————————————————————————————————————
-set /p bore=请输入基础镜像序号：
+set /p bore=请输入基础镜像：
 if "%bore%"=="" (set bore=2&echo 没有选择 wim,已自动选择 winre.wim)
-if "%bore%" geq "3" (echo 没有选择对应的项目&cmd /k)
+if exist "%bore%" (
+    copy /y "%bore%" "%cd%\target\base.wim"
+    set "APP_BASE_PATH=%cd%\target\base.wim"
+    set APP_BASE_INDEX=1
+) else echo 没有选择对应的项目&cmd /k
 
 if "%bore%"=="1" (
   copy /y "%cddir:~,1%:\sources\boot.wim" "%cd%\target\base.wim"
