@@ -35,7 +35,7 @@ if exist X_PF\ (
 )
 
 if exist "X_PF(x86)\" (
-    xcopy /E /Y "X_PF(x86)\*.*" "%X%\Program Files(x86)\"
+    xcopy /E /Y "X_PF(x86)\*.*" "%X%\Program Files (x86)\"
 )
 
 if exist X_WIN\ (
