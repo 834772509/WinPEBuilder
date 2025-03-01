@@ -32,7 +32,7 @@ if "x%APP_RUNAS_TI%"=="x" (
 
 :cui
 set /p cddir=输入虚拟光驱盘符：
-if "%cddir%"=="" (echo 没有输入虚拟光驱盘符&cmd /k)
+if "%cddir%"=="" (echo 没有输入虚拟光驱盘符 & goto :cui)
 if exist "%cddir:~,1%:\sources\install.wim" (
   set APP_SRC=%cddir:~,1%:\sources\install.wim
 ) else (
@@ -40,7 +40,7 @@ if exist "%cddir:~,1%:\sources\install.wim" (
     set APP_SRC=%cddir:~,1%:\sources\install.esd
   ) else (
     echo 没找到 install.wim 和 install.esd
-    cmd /k
+    goto :cui
   )
 )
 echo ————————————————————————————————————————————————
@@ -55,8 +55,8 @@ for /f "tokens=2 delims=: " %%a in ('Dism.exe /English /Get-WimInfo /WimFile:"%A
 echo ————————————————————————————————————————————————
 set /p APP_SRC_INDEX=输入install分卷号：
 if "%APP_SRC_INDEX%"=="" (set APP_SRC_INDEX=1&echo 没有输入分卷号，已自动选择卷1)
-if %APP_SRC_INDEX% lss 1 (echo 没有选择对应的分卷号&cmd /k)
-if %APP_SRC_INDEX% gtr %index% (echo 没有选择对应的分卷号&cmd /k)
+if %APP_SRC_INDEX% lss 1 (echo 没有选择对应的分卷号 & goto :cui)
+if %APP_SRC_INDEX% gtr %index% (echo 没有选择对应的分卷号 & goto :cui)
 
 set index=0
 echo.
@@ -68,9 +68,9 @@ echo  !index!     %%~nxi
 )
 echo ————————————————————————————————————————————————
 set /p project=请输入项目序号：
-if "%project%"=="" (echo 没有选择项目&cmd /k)
-if "%project%" lss "1" (echo 没有选择对应的项目&cmd /k)
-if "%project%" gtr "%index%" (echo 没有选择对应的项目&cmd /k)
+if "%project%"=="" (echo 没有选择项目 & goto :cui)
+if "%project%" lss "1" (echo 没有选择对应的项目 & goto :cui)
+if "%project%" gtr "%index%" (echo 没有选择对应的项目 & goto :cui)
 set index=0
 for /d %%x in ("%cd%\projects\*") do (
   set /a index=index+1
@@ -86,26 +86,48 @@ echo        自定义基础镜像 (卷1)
 echo ————————————————————————————————————————————————
 set /p bore=请输入基础镜像：
 if "%bore%"=="" (set bore=2&echo 没有选择 wim,已自动选择 winre.wim)
-if exist "%bore%" (
-    copy /y "%bore%" "%cd%\target\base.wim"
-    set "APP_BASE_PATH=%cd%\target\base.wim"
-    set APP_BASE_INDEX=1
-) else echo 没有选择对应的项目&cmd /k
-
 if "%bore%"=="1" (
   copy /y "%cddir:~,1%:\sources\boot.wim" "%cd%\target\base.wim"
   set "APP_BASE_PATH=%cd%\target\base.wim"
   set APP_BASE_INDEX=2
-)
-if "%bore%"=="2" (
+) else if "%bore%"=="2" (
   set "APP_BASE_PATH=%cd%\target\winre.wim"
   set APP_BASE_INDEX=1
   echo \033[93;46m [构建] 提取winre.wim...... | CmdColor.exe
   wimlib-imagex.exe extract "%APP_SRC%" %APP_SRC_INDEX% "\Windows\System32\Recovery\winre.wim" --dest-dir="%cd%\target" --nullglob --no-acls
-)
+) else if exist "%bore%" (
+  copy /y "%bore%" "%cd%\target\base.wim"
+  set "APP_BASE_PATH=%cd%\target\base.wim"
+  set APP_BASE_INDEX=1
+) else echo 没有选择对应的项目 & goto :cui
 
 :build
 set startime=%time:~0,2%%time:~3,2%%time:~6,2%
+
+echo \033[93;46m [构建] 获取基础镜像信息...... | CmdColor.exe
+for /f "tokens=1,2 delims=:(" %%i in ('Dism.exe /Get-WimInfo /WimFile:"%APP_BASE_PATH%" /Index:%APP_BASE_INDEX% /English') do (
+  if "%%i"=="Architecture " set APP_PE_ARCH=%%j
+  if "%%i"=="Version " set APP_PE_VER=%%j
+  if "%%i"=="ServicePack Build " set APP_PE_BUILD=%%j
+  if "x!LANG_FLAG!"=="x1" (
+    set APP_PE_LANG=%%i
+    set LANG_FLAG=
+  )
+  if "%%i"=="Languages " set LANG_FLAG=1
+)
+if "x%APP_PE_LANG%"=="x" (
+  echo \033[93;46m [构建] 获取基础镜像信息失败 | CmdColor.exe
+  cmd /k
+)
+
+set "APP_PE_ARCH=%APP_PE_ARCH: =%"
+set "APP_PE_VER=%APP_PE_VER: =%"
+set "APP_PE_BUILD=%APP_PE_BUILD: =%"
+rem here is TAB, not SPACE 
+set "APP_PE_LANG=%APP_PE_LANG:	=%"
+set "APP_PE_LANG=%APP_PE_LANG: =%"
+
+echo %APP_PE_VER%.%APP_PE_BUILD%,%APP_PE_ARCH%,%APP_PE_LANG%
 
 set "SRC_PATH=%cd%\target\install"
 set "APP_TMP_PATH=%cd%\target\temp"
