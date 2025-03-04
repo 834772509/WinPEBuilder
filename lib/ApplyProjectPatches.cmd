@@ -32,3 +32,12 @@ for /d %%i in ("%project_path%\*") do (
         popd
     )
 )
+
+if exist "%project_path%\last.cmd" (
+    echo \033[93;46m [执行] %project_path%\last.cmd | CmdColor.exe
+    pushd "%project_path%"
+    call "%project_path%\last.cmd" || (
+        echo 调用"%project_path%\last.cmd"失败
+    )
+    popd
+)
