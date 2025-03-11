@@ -153,6 +153,15 @@ call RegCopyEx Classes .msi
 call RegCopyEx Classes Msi.Package,Msi.Path
 ```
 
+### AddDrivers
+
+复制源镜像中的驱动文件及驱动相关注册表至基础镜像
+
+```batch
+call AddDrivers wceisvista.inf
+call AddDrivers "netrndis.inf,rndiscmp.inf"
+```
+
 ### AddEnvVar
 
 增加指定路径至环境变量
@@ -184,8 +193,6 @@ X2X
 └─────────────────────────────────────────
 ```
 
-使用示例：
-
 ```batch
 call X2X
 ```
@@ -200,8 +207,6 @@ call X2X
 - `X_PF`: `\Program Files`
 - `X_PF(x86)`: `\Program Files(x86)`
 - `X_Desktop`: `\Users\Default\Desktop`
-
-使用示例：
 
 ```batch
 call Extract2X Tools.7z %X%
