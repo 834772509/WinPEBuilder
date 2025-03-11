@@ -48,6 +48,7 @@ WinPEBuilder 中内置了许多环境变量，可直接在脚本中进行使用�
 1. `Project\项目名称\main.cmd`
 2. `Project\项目名称\`下的各个二级目录中的`main.cmd`
 3. `Project\项目名称\`下的各个二级目录中的`last.cmd`
+4. `Project\项目名称\last.cmd`
 
 注意：仅执行二级目录的脚本，超过二级目录的脚本请在二级目录脚本中进行调用脚本。
 
