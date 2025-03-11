@@ -189,3 +189,21 @@ X2X
 ```batch
 call X2X
 ```
+
+### Extract2X
+
+将压缩文件解压指定目录。支持以下变量路径：
+
+- `X`: `\`
+- `X_WIN`: `\Windows\`
+- `X_SYS`: `\Windows\System32`
+- `X_PF`: `\Program Files`
+- `X_PF(x86)`: `\Program Files(x86)`
+- `X_Desktop`: `\Users\Default\Desktop`
+
+使用示例：
+
+```batch
+call Extract2X Tools.7z %X%
+call Extract2X StartAllback.7z %X_PF%
+```
