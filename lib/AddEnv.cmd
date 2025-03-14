@@ -8,7 +8,19 @@ for %%m in ("!replace_list:;=" "!") do (
   for /f "tokens=1,2 delims==" %%a in (%%m) do set "raw_path=!raw_path:%%a=%%b!"
 )
 
+reg add "HKLM\Tmp_DEFAULT\Environment" /f >nul 2>&1
+
+set "current_path="
 for /f "tokens=2*" %%a in ('reg query "HKLM\Tmp_DEFAULT\Environment" /v "Path" 2^>nul') do (
-  reg add "HKLM\Tmp_DEFAULT\Environment" /v "Path" /t REG_SZ /d "%%b;!raw_path!" /f
+  set "current_path=%%b"
 )
+
+if defined current_path (
+  set "new_path=!current_path!;!raw_path!"
+) else (
+  set "new_path=!raw_path!"
+)
+
+reg add "HKLM\Tmp_DEFAULT\Environment" /v "Path" /t REG_SZ /d "!new_path!" /f
+
 endlocal
